@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using showroomManagement.Models;
+using showroomManagement.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +27,16 @@ namespace showroomManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<DbContextShowroom>(x => x.UseSqlServer("server=.; Database=showroomDb; Integrated security=true;"));
+            services.AddDbContext<DbContextShowroom>(x => x.UseSqlServer("server=.; Database=ShowroomDb; Integrated security=true;"));
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<DbContextShowroom>();
+            services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimPrincipalFactory>();
+            services.ConfigureApplicationCookie(A => A.LoginPath = "/accounts/login");
+            services.Configure<IdentityOptions>(x => {
+                x.Password.RequireDigit = false;
+                //x.SignIn.RequireConfirmedEmail = true;
+                x.Lockout.MaxFailedAccessAttempts = 3;
+                x.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,7 +53,7 @@ namespace showroomManagement
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

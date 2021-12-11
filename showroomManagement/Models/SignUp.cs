@@ -11,6 +11,8 @@ namespace showroomManagement.Models
     {
         public int id { get; set; }
         [Required]
+        [DisplayName("FullName")]
+        public string FullName { get; set; }
         [DisplayName("Frist Name")]
         public string FristName { get; set; }
         [Required]

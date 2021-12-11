@@ -1,48 +1,386 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
+
+<!-- Mirrored from storage.googleapis.com/theme-vessel-items/checking-sites/autocar-2-html/HTML/main/index-6.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Dec 2021 18:28:48 GMT -->
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - showroomManagement</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <title>Autocar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+   
+    <!-- External CSS libraries -->
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/css/bootstrap-submenu.css">
+
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/css/bootstrap-select.min.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/fonts/linearicons/style.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/css/dropzone.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/css/lightbox.min.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/css/jnoty.css">
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" id="style_sheet" href="~/theme/assets/css/skins/yellow.css">
+
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" href="~/theme/assets/img/favicon.ico" type="image/x-icon">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700%7CUbuntu:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link rel="stylesheet" type="text/css" href="~/theme/assets/css/ie10-viewport-bug-workaround.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script  src="~/theme/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="~/theme/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script  src="~/theme/assets/js/html5shiv.min.js"></script>
+    <script  src="~/theme/assets/js/respond.min.js"></script>
+    <![endif]-->
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="page_loader"></div>
+    <!-- header start -->
+    <div>
+        <!-- Top header start -->
+        <header class="top-header top-header-bg">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">showroomManagement</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 col-sm-7">
+                        <div class="list-inline">
+                            <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>Need Support? 1-8X0-666-8X88</a>
+                            <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4 col-sm-5">
+                        <ul class="top-social-media pull-right">
+                            <li>
+                                <a asp-area="" asp-controller="Accounts" asp-action="Login" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Accounts" asp-action="SignUp" class="sign-in"><i class="fa fa-user"></i> Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Top header end -->
+        <!-- Main header start -->
+        <header class="main-header sticky-header header-with-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand company-logo" asp-controller="Home" asp-action="Index">
+                        <img src="~/theme/assets/img/logos/black-logo.png" alt="logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" id="drawer">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="navbar-collapse collapse w-100 justify-content-end" id="navbar">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Car
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">New Cars</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Used Cars</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Shop
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="shop-list.html">Shop List</a></li>
+                                    <li><a class="dropdown-item" href="shop-details.html">Shop Details</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown"><a class="nav-link" asp-controller="Home" asp-action="Services">Services</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link" asp-controller="Home" asp-action="ContactUS">Contact US</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link" asp-controller="Home" asp-action="AboutUS">About US</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    More
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Brands">Brands</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Faq">Faq</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="ComingSoon">Coming Soon</a></li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Grid Layout</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="car-grid-fullWidth.html">Grid FullWidth</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown"><a href="#full-page-search" class="nav-link h-icon"><i class="fa fa-search"></i></a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- Main header end -->
+        <!-- Sidenav start -->
+        <nav id="sidebar" class="nav-sidebar">
+            <!-- Close btn-->
+            <div id="dismiss">
+                <i class="fa fa-close"></i>
+            </div>
+            <div class="sidebar-inner">
+                <div class="sidebar-logo">
+                    <a href="index.html">
+                        <img src="~/theme/assets/img/logos/black-logo.png" alt="sidebarlogo">
+                    </a>
+                </div>
+                <div class="sidebar-navigation">
+                    <ul class="menu-list">
+                        <li><a asp-controller="Home" asp-action="Index" class="active">Home</a></li>
+                        <li>
+                            <a href="#">Car Listing <em class="fa fa-chevron-down"></em></a>
+                            <ul>
+                                <li>
+                                    <a href="#">List Layout <em class="fa fa-chevron-down"></em></a>
+                                    <ul>
+                                        <li><a href="car-list-rightside.html">List Right Sidebar</a></li>
+                                        <li><a href="car-list-leftsidebar.html">List Left Sidebar</a></li>
+                                        <li><a href="car-list-fullWidth.html">List FullWidth</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li><a asp-controller="Home" asp-action="Services" class="active">Services</a></li>
+                        <li><a asp-controller="Home" asp-action="AboutUS" class="active">About US</a></li>
+                        <li><a asp-controller="Home" asp-action="ContactUS" class="active">Contact US</a></li>
+                        <li>
+                            <a href="#full-page-search" class="nav-link h-icon">
+                                <i class="fa fa-search"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>
+                <div class="get-in-touch">
+                    <h3 class="heading">Get in Touch</h3>
+                    <div class="get-in-touch-box d-flex mb-2">
+                        <i class="flaticon-phone"></i>
+                        <a href="tel:0477-0477-8556-552">0288 2547 874</a>
+                    </div>
+                    <div class="get-in-touch-box d-flex mb-2">
+                        <i class="flaticon-mail"></i>
+                        <div class="media-body">
+                            <a href="#">info@themevessel.com</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="get-social">
+                    <h3 class="heading">Get Social</h3>
+                    <a href="#" class="facebook-bg">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="#" class="twitter-bg">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="google-bg">
+                        <i class="fa fa-google"></i>
+                    </a>
+                    <a href="#" class="linkedin-bg">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </div>
             </div>
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+        <!-- Sidenav end -->
+
+    </div>
+    <!-- header end -->
+
+    <div class="">
+        <main role="main" class="">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - showroomManagement - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- Footer start -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="row">
+                <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-item clearfix">
+                        <img src="~/theme/assets/img/logos/logo.png" alt="logo" class="f-logo" />
+                        <div class="s-border"></div>
+                        <div class="m-border"></div>
+                        <div class="text">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.
+                                Donec a consectetur nulla. Nulla posuere sapien vitae lectus
+                                suscipit, et pulvinar nisi tincidunt. Aliquam erat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-item clearfix">
+                        <h4>Contact Info</h4>
+                        <div class="s-border"></div>
+                        <div class="m-border"></div>
+                        <ul class="contact-info">
+                            <li>
+                                <i class="flaticon-pin"></i>20/F Green Road, Dhanmondi, Dhaka
+                            </li>
+                            <li>
+                                <i class="flaticon-mail"></i><a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
+                            </li>
+                            <li>
+                                <i class="flaticon-phone"></i><a href="tel:+55-417-634-7071">+0477 85X6 552</a>
+                            </li>
+                            <li><i class="flaticon-fax"></i>+0477 85X6 552</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
+                    <div class="footer-item">
+                        <h4>Useful Links</h4>
+                        <div class="s-border"></div>
+                        <div class="m-border"></div>
+                        <ul class="links">
+                            <li>
+                                <a href="#"><i class="fa fa-angle-right"></i>Home</a>
+                            </li>
+                            <li>
+                                <a href="about.html"><i class="fa fa-angle-right"></i>About Us</a>
+                            </li>
+                            <li>
+                                <a href="services.html"><i class="fa fa-angle-right"></i>Services</a>
+                            </li>
+                            <li>
+                                <a href="car-list-rightside.html"><i class="fa fa-angle-right"></i>Car Listing</a>
+                            </li>
+                            <li>
+                                <a href="blog-details.html"><i class="fa fa-angle-right"></i>Blog</a>
+                            </li>
+                            <li>
+                                <a href="contact.html"><i class="fa fa-angle-right"></i>Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="elements.html"><i class="fa fa-angle-right"></i>Elements</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-item clearfix">
+                        <h4>Subscribe</h4>
+                        <div class="s-border"></div>
+                        <div class="m-border"></div>
+                        <div class="Subscribe-box">
+                            <p>
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                                qui officia deserunt mollit.
+                            </p>
+                            <div class="newsletter-content-wrap">
+                                <form class="newsletter-form d-flex" action="#">
+                                    <input class="form-control me-2"
+                                           type="email"
+                                           id="email"
+                                           placeholder="Email Address..." />
+                                    <button class="btn btn-theme" type="submit">
+                                        <i class="fa fa-paper-plane"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="copy">
+                            © 2021 <a href="#">Theme Vessel.</a> All Rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="social-list-2">
+                            <ul>
+                                <li>
+                                    <a href="#" class="facebook-bg">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="twitter-bg">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="google-bg">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="linkedin-bg">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Footer end -->
+
+
+    <script src="~/theme/assets/js/jquery.min.js"></script>
+    <script src="~/theme/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/theme/assets/js/popper.min.js"></script>
+    <script src="~/theme/assets/js/bootstrap-submenu.js"></script>
+    <script src="~/theme/assets/js/rangeslider.js"></script>
+    <script src="~/theme/assets/js/jquery.mb.YTPlayer.js"></script>
+    <script src="~/theme/assets/js/bootstrap-select.min.js"></script>
+    <script src="~/theme/assets/js/jquery.easing.1.3.js"></script>
+    <script src="~/theme/assets/js/jquery.scrollUp.js"></script>
+    <script src="~/theme/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/theme/assets/js/dropzone.js"></script>
+    <script src="~/theme/assets/js/slick.min.js"></script>
+    <script src="~/theme/assets/js/jquery.filterizr.js"></script>
+    <script src="~/theme/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/theme/assets/js/jquery.countdown.js"></script>
+    <script src="~/theme/assets/js/jquery.mousewheel.min.js"></script>
+    <script src="~/theme/assets/js/lightgallery-all.js"></script>
+    <script src="~/theme/assets/js/jnoty.js"></script>
+    <script src="~/theme/assets/js/sidebar.js"></script>
+    <script src="~/theme/assets/js/app.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="~/theme/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Custom javascript -->
+    <script src="~/theme/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+
 </body>
+
 </html>

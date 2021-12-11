@@ -22,8 +22,27 @@ namespace showroomManagement.Controllers
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        public IActionResult ContactUS()
+        {
+            return View();
+        }
+        public IActionResult AboutUS()
+        {
+            return View();
+        }
+        public IActionResult Services()
+        {
+            return View();
+        }
+        public IActionResult Faq()
+        {
+            return View();
+        }
+        public IActionResult Brands()
+        {
+            return View();
+        }
+        public IActionResult ComingSoon()
         {
             return View();
         }

@@ -1,0 +1,59 @@
+﻿@model showroomManagement.Models.Login
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="contact-section">
+    <div class="container">
+        <div class="row g-0 login-box">
+            <div class="col-lg-6 align-self-center">
+                <div class="form-section">
+                    <div class="logo-2 logo-3">
+                        <a asp-controller="Home" asp-action="Index">
+                            <img src="~/theme/assets/img/logos/black-logo.png" alt="logo">
+                        </a>
+                    </div>
+                    <h3>Login into your account</h3>
+                    <div class="btn-section clearfix">
+                        <a asp-controller="Accounts" asp-action="Login" class="link-btn active btn-1 active-bg">Login</a>
+                        <a asp-controller="Accounts" asp-action="SignUP" class="link-btn btn-2 default-bg">Register</a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <form asp-action="Login">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group clearfix">
+                            <input name="email" type="email" asp-for="Email" class="form-control" placeholder="Email Address" aria-label="Email Address">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group clearfix">
+                            <input name="password" type="password" asp-for="Password" class="form-control" placeholder="Password" aria-label="Password">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group clearfix mb-0">
+                            <button type="submit" value="Login" class="btn-md btn-theme btn float-start">Login</button>
+                            <a asp-controller="Accounts" asp-action="ForgotPassword" class="forgot-password">Forgot Password</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 align-self-center bg-img">
+                <div class="info clearfix">
+                    <div class="logo-2">
+                        <a asp-controller="Home" asp-action="Index">
+                            <img src="~/theme/assets/img/logos/logo.png" alt="logo">
+                        </a>
+                    </div>
+                    <h3>Welcome to Logdy</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

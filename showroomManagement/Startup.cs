@@ -1,12 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using showroomManagement.Models;
-using showroomManagement.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,16 +25,16 @@ namespace showroomManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<DbContextShowroom>(x => x.UseSqlServer("server=.; Database=ShowroomDb; Integrated security=true;"));
-            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<DbContextShowroom>();
-            services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimPrincipalFactory>();
-            services.ConfigureApplicationCookie(A => A.LoginPath = "/accounts/login");
-            services.Configure<IdentityOptions>(x => {
-                x.Password.RequireDigit = false;
-                //x.SignIn.RequireConfirmedEmail = true;
-                x.Lockout.MaxFailedAccessAttempts = 3;
-                x.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-            });
+            services.AddDbContext<DbContextShowroom>(x => x.UseSqlServer("server=.; Database=ShrowroomDb; Integrated security=true;"));
+            //services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimPrincipalFactory>();
+            //services.ConfigureApplicationCookie(A => A.LoginPath = "/accounts/login");
+            //services.Configure<IdentityOptions>(x => {
+            //    x.Password.RequireDigit = false;
+            //    //x.SignIn.RequireConfirmedEmail = true;
+            //    x.Lockout.MaxFailedAccessAttempts = 3;
+            //    x.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            //});
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

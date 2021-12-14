@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace showroomManagement.Models
-{   
+{
     [NotMapped]
     public class ErrorViewModel
     {

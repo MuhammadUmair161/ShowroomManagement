@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "newCar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Sub banner start -->
+<div class="sub-banner">
+    <div class="container breadcrumb-area">
+        <div class="breadcrumb-areas">
+            <h1>New cars</h1>
+            <ul class="breadcrumbs">
+                <li><a asp-controller="Home" asp-action="index">Home</a></li>
+                <li class="active">New cars</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Sub Banner end -->
+<!-- New car start -->
+<div class="featured-car content-area-5">
+    <div class="container">
+        <!-- Main title -->
+        <div class="main-title">
+            <h1>New Cars</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod
+            </p>
+        </div>
+        <div class="row">
+            @for (int i = 1; i <= 100; i++)
+            {
+            <partial name="CarPv"></partial>
+
+            }
+        </div>
+    </div>
+</div>
+<!-- New car end -->

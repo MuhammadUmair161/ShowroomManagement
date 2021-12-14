@@ -23,6 +23,15 @@
                     <form method="post" asp-action="SignUp">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group clearfix">
+                            <input name="FristName" type="text" class="form-control" asp-for="FristName" placeholder="Frist Name" aria-label="Frist Name">
+                            <span asp-validation-for="FristName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group clearfix">
+                            <input name="LastName" type="text" class="form-control" asp-for="LastName" placeholder="Last Name" aria-label="Last Name">
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group clearfix">
                             <input name="email" type="email" asp-for="Email" class="form-control" placeholder="Email Address" aria-label="Email Address">
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>

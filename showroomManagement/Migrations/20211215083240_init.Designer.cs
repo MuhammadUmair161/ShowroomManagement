@@ -10,7 +10,7 @@ using showroomManagement.Models;
 namespace showroomManagement.Migrations
 {
     [DbContext(typeof(DbContextShowroom))]
-    [Migration("20211214201341_init")]
+    [Migration("20211215083240_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

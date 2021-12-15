@@ -27,6 +27,7 @@ namespace showroomManagement
         {
             services.AddControllersWithViews();
             services.AddDbContext<DbContextShowroom>(x => x.UseSqlServer("server=.; Database=ShrowroomDb; Integrated security=true;"));
+            services.AddDbContext<ShrowroomDbContext>();
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<DbContextShowroom>();
             //services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimPrincipalFactory>();
             //services.ConfigureApplicationCookie(A => A.LoginPath = "/accounts/login");

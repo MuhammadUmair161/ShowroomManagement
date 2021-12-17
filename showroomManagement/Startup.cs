@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using showroomManagement.Models;
+using showroomManagement.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,16 +28,18 @@ namespace showroomManagement
         {
             services.AddControllersWithViews();
             services.AddDbContext<DbContextShowroom>(x => x.UseSqlServer("server=.; Database=ShrowroomDb; Integrated security=true;"));
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<DbContextShowroom>().AddDefaultTokenProviders();
             services.AddDbContext<ShrowroomDbContext>();
-            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<DbContextShowroom>();
-            //services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimPrincipalFactory>();
-            //services.ConfigureApplicationCookie(A => A.LoginPath = "/accounts/login");
-            //services.Configure<IdentityOptions>(x => {
-            //    x.Password.RequireDigit = false;
-            //    //x.SignIn.RequireConfirmedEmail = true;
-            //    x.Lockout.MaxFailedAccessAttempts = 3;
-            //    x.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-            //});
+            services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimPrincipalFactory>();
+            services.ConfigureApplicationCookie(A => A.LoginPath = "/accounts/login");
+            services.Configure<IdentityOptions>(x =>
+            {
+                x.Password.RequireDigit = true;
+                x.Password.RequiredLength = 6;
+                //x.SignIn.RequireConfirmedEmail = true;
+                x.Lockout.MaxFailedAccessAttempts = 2;
+                x.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
+            });
 
         }
 

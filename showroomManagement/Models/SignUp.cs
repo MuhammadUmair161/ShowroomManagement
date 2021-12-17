@@ -10,6 +10,7 @@ namespace showroomManagement.Models
     public class SignUp
     {
         public int id { get; set; }
+        [Required]
         [DisplayName("Frist Name")]
         public string FristName { get; set; }
         [DisplayName("Last Name")]

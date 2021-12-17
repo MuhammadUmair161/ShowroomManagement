@@ -27,15 +27,10 @@ namespace showroomManagement.Controllers
 
 
         // GET: EmployeeController
-        public ActionResult EmployeeList()
+        public ActionResult _EmployeeList()
         {
             var list = this._context.Employees.ToList();
             return View(list);
-        }
-        // GET: EmployeeController/Create
-        public ActionResult CreateEmployee()
-        {
-            return View();
         }
         [HttpPost]
         public IActionResult index(Employee employee)

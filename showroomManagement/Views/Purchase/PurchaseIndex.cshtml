@@ -1,0 +1,78 @@
+﻿@model showroomManagement.Models.Purchase
+
+@{
+    ViewData["Title"] = "PurchaseIndex";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<!-- begin app-main -->
+<div class="app-main" id="main">
+    <!-- begin container-fluid -->
+    <div class="container-fluid">
+        <!-- begin row -->
+        <div class="row">
+            <div class="col-md-12 m-b-30">
+                <!-- begin page title -->
+                <div class="d-block d-lg-flex flex-nowrap align-items-center">
+                    <div class="page-title mr-4 pr-4 border-right">
+                        <h1>Purchase</h1>
+                    </div>
+                    <div class="breadcrumb-bar align-items-center"></div>
+                </div>
+                <!-- end page title -->
+                <!---------------------->
+                <div class="card-body">
+                    <div class="accordion" id="accordionsimplefill">
+                        <div class="mb-2 acd-group">
+                            <div class="card-header bg-primary rounded-0">
+                                <h5 class="mb-0">
+                                    <a href="#collapse" class="btn-block text-white text-left acd-heading" data-toggle="collapse">Add Purchase</a>
+                                </h5>
+                            </div>
+                            <div id="collapse" class="collapse show" data-parent="#accordionsimplefill">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <form asp-action="PurchaseIndex" class="w-100">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <div class="form-group">
+                                                <input asp-for="PurchaseDate" placeholder="PurchaseDate" class="form-control" />
+                                                <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <select asp-for="CarId" class="form-control" placeholder="Car" asp-items="ViewBag.CarId"></select>
+                                            </div>
+                                            <div class="form-group">
+                                                <select asp-for="VendorId" class="form-control" placeholder="Vendor" asp-items="ViewBag.VendorId"></select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input asp-for="Quantity" placeholder="Quantity" class="form-control" />
+                                                <span asp-validation-for="Quantity" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input asp-for="TotalAmount" placeholder="TotalAmount" class="form-control" />
+                                                <span asp-validation-for="TotalAmount" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input asp-for="AmountPaid" placeholder="AmountPaid" class="form-control" />
+                                                <span asp-validation-for="AmountPaid" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input asp-for="AmountDue" placeholder="AmountDue" class="form-control" />
+                                                <span asp-validation-for="AmountDue" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" value="Add Purchase" class="btn btn-primary" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end container-fluid -->
+</div>
+<!-- end app-main -->

@@ -1,0 +1,62 @@
+﻿@model showroomManagement.Models.Vendor
+
+@{
+    ViewData["Title"] = "VendorIndex";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<!-- begin app-main -->
+<div class="app-main" id="main">
+    <!-- begin container-fluid -->
+    <div class="container-fluid">
+        <!-- begin row -->
+        <div class="row">
+            <div class="col-md-12 m-b-30">
+                <!-- begin page title -->
+                <div class="d-block d-lg-flex flex-nowrap align-items-center">
+                    <div class="page-title mr-4 pr-4 border-right">
+                        <h1>Vendor</h1>
+                    </div>
+                    <div class="breadcrumb-bar align-items-center"></div>
+                </div>
+                <!-- end page title -->
+                <!---------------------->
+                <div class="card-body">
+                    <div class="accordion" id="accordionsimplefill">
+                        <div class="mb-2 acd-group">
+                            <div class="card-header bg-primary rounded-0">
+                                <h5 class="mb-0">
+                                    <a href="#collapse" class="btn-block text-white text-left acd-heading" data-toggle="collapse">Add Vendor</a>
+                                </h5>
+                            </div>
+                            <div id="collapse" class="collapse show" data-parent="#accordionsimplefill">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <form asp-action="VendorIndex" class="w-100">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <div class="form-group">
+                                                <input asp-for="Name" class="form-control" placeholder="Vendor Name" />
+                                                <span asp-validation-for="Name" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input asp-for="Address" class="form-control" placeholder="Address" />
+                                                <span asp-validation-for="Address" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" value="Add Vendor" class="btn btn-primary" />
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end container-fluid -->
+</div>
+<!-- end app-main -->

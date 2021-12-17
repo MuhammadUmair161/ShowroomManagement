@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using showroomManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,17 +9,58 @@ using System.Threading.Tasks;
 
 namespace showroomManagement.Controllers
 {
-    public class cars : Controller
+    public class CarController : Controller
     {
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly ShrowroomDbContext _context;
+        public CarController(ShrowroomDbContext context, IWebHostEnvironment WebHostEnvironment)
+        {
+            this._context = context;
+            this._webHostEnvironment = WebHostEnvironment;
+        }
         // GET: cars
         public ActionResult newCar()
         {
             return View();
         }
-        public ActionResult CarPv()
+        public ActionResult _CarPv()
         {
             return View();
         }
+
+        public IActionResult CarIndex()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CarIndex(Car car)
+        {
+            if (ModelState.IsValid)
+            {
+                this._context.Cars.Add(car);
+                if (this._context.SaveChanges() > 0)
+                {
+                    return RedirectToAction("CarIndex", "Car");
+                }
+            }
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CarIndex(CarType carType)
+        {
+            if (ModelState.IsValid)
+            {
+                this._context.CarTypes.Add(carType);
+                if (this._context.SaveChanges() > 0)
+                {
+                    return RedirectToAction("CarIndex", "Car");
+                }
+            }
+            return View();
+        }
+
+
+
 
         // GET: cars/Details/5
         public ActionResult Details(int id)

@@ -362,15 +362,18 @@
                     <div class="sidebar-nav scrollbar scroll_ligh">
                         <ul class="metismenu " id="sidebarNav">
                             <li class="nav-static-title">Personal</li>
-                            <li><a asp-controller="home" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-home"></i><span class="nav-title">Home</span></a> </li>
-                            <li>
+                            <li><a asp-controller="home" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-home"></i><span class="nav-title">Go to Web</span></a> </li>
+                            @*<li>
                                 <a class="has-arrow" asp-controller="dashboard" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Car</span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <li> <a href="#">Car</a> </li>
                                 </ul>
-                            </li>
-                            <li><a asp-controller="Employee" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-Purchase"></i><span class="nav-title">Employee</span></a> </li>
-                            <li><a asp-controller="dashboard" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-Purchase"></i><span class="nav-title">Purchase</span></a> </li>
+                            </li>*@
+
+                            <li><a asp-controller="Car" asp-action="CarIndex" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Car</span></a> </li>
+                            <li><a asp-controller="Employee" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Employee</span></a> </li>
+                            <li><a asp-controller="Vendor" asp-action="VendorIndex" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Vendor</span></a> </li>
+                            <li><a asp-controller="Purchase" asp-action="PurchaseIndex" aria-expanded="false"><i class="nav-icon ti ti-credit-card"></i><span class="nav-title">Purchase</span></a> </li>
                             <li><a asp-controller="dashboard" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Chat</span></a> </li>
                             <li><a asp-controller="dashboard" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Calendar</span></a></li>
                             <li><a asp-controller="dashboard" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-email"></i><span class="nav-title">Mail</span></a> </li>

@@ -1,11 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
+<!DOCTYPE html>
 <html lang="zxx">
 
 <head>
     <title>Autocar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-   
+
     <!-- External CSS libraries -->
     <link rel="stylesheet" type="text/css" href="~/Theme/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="~/Theme/assets/css/animate.min.css">
@@ -55,26 +56,53 @@
     <div>
         <!-- Top header start -->
         <header class="top-header top-header-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-8 col-sm-7">
-                        <div class="list-inline">
-                            <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>Need Support? 1-8X0-666-8X88</a>
-                            <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a>
+            @if (_signInManager.IsSignedIn(User))
+            {
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8 col-sm-7">
+                            <div class="list-inline">
+                                <a href=""><i class="fa fa-user"></i>@User.FindFirst("UserFName").Value @User.FindFirst("UserlName").Value</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-4 col-sm-5">
+                            <ul class="top-social-media pull-right">
+                                <li>
+                                    <a asp-controller="Dashboard" asp-action="index" class="sign-in"><i class="fa fa-user"></i> Dashboard</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Accounts" asp-action="LogOut" class="sign-in"><i class="fa fa-sign-in"></i> LogOut</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-4 col-sm-5">
-                        <ul class="top-social-media pull-right">
-                            <li>
-                                <a asp-controller="Accounts" asp-action="Login" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
-                            </li>
-                            <li>
-                                <a asp-controller="Accounts" asp-action="SignUp" class="sign-in"><i class="fa fa-user"></i> Register</a>
-                            </li>
-                        </ul>
+                </div>
+            }
+            else
+            {
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8 col-sm-7">
+                            <div class="list-inline">
+                                <a href="tel: 03111222333"><i class="fa fa-phone"></i>Need Support? 03111222333</a>
+                                <a href="tel: AutoCargmail.com"><i class="fa fa-envelope"></i>AutoCargmail.com</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-4 col-sm-5">
+                            <ul class="top-social-media pull-right">
+                                <li>
+                                    <a asp-controller="Accounts" asp-action="Login" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Accounts" asp-action="SignUp" class="sign-in"><i class="fa fa-user"></i> Register</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            }
+
         </header>
         <!-- Top header end -->
         <!-- Main header start -->
@@ -96,7 +124,7 @@
                                     Car
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" asp-controller="Cars" asp-action="newCar">New Cars</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Car" asp-action="newCar">New Cars</a></li>
                                     <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Used Cars</a></li>
                                 </ul>
                             </li>
@@ -144,7 +172,7 @@
             </div>
             <div class="sidebar-inner">
                 <div class="sidebar-logo">
-                    <a  asp-controller="Home" asp-action="Index">
+                    <a asp-controller="Home" asp-action="Index">
                         <img src="~/Theme/assets/img/logos/black-logo.png" alt="sidebarlogo">
                     </a>
                 </div>

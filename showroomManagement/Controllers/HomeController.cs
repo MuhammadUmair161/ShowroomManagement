@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using showroomManagement.Models;
 using System;
@@ -22,6 +23,7 @@ namespace showroomManagement.Controllers
         {
             return View();
         }
+        [Authorize]
         public IActionResult ContactUS()
         {
             return View();
@@ -30,10 +32,12 @@ namespace showroomManagement.Controllers
         {
             return View();
         }
+        [Authorize]
         public IActionResult Services()
         {
             return View();
         }
+        [Authorize]
         public IActionResult Faq()
         {
             return View();

@@ -33,7 +33,7 @@ namespace showroomManagement.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult CarIndex(Car car)
+        public IActionResult _Car(Car car)
         {
             if (ModelState.IsValid)
             {
@@ -46,11 +46,63 @@ namespace showroomManagement.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult CarIndex(CarType carType)
+        public IActionResult _CarType(CarType carType)
         {
             if (ModelState.IsValid)
             {
                 this._context.CarTypes.Add(carType);
+                if (this._context.SaveChanges() > 0)
+                {
+                    return RedirectToAction("CarIndex", "Car");
+                }
+            }
+            return View();
+        }
+        [HttpPost]
+        public IActionResult _Company(Company company)
+        {
+            if (ModelState.IsValid)
+            {
+                this._context.Companies.Add(company);
+                if (this._context.SaveChanges() > 0)
+                {
+                    return RedirectToAction("CarIndex", "Car");
+                }
+            }
+            return View();
+        }
+        [HttpPost]
+        public IActionResult _NewCar(NewCar newCar)
+        {
+            if (ModelState.IsValid)
+            {
+                this._context.NewCars.Add(newCar);
+                if (this._context.SaveChanges() > 0)
+                {
+                    return RedirectToAction("CarIndex", "Car");
+                }
+            }
+            return View();
+        }
+        [HttpPost]
+        public IActionResult _UsedCar(UsedCar usedCar)
+        {
+            if (ModelState.IsValid)
+            {
+                this._context.UsedCars.Add(usedCar);
+                if (this._context.SaveChanges() > 0)
+                {
+                    return RedirectToAction("CarIndex", "Car");
+                }
+            }
+            return View();
+        }
+        [HttpPost]
+        public IActionResult _RegisteredCar(RegisteredCar registered)
+        {
+            if (ModelState.IsValid)
+            {
+                this._context.RegisteredCars.Add(registered);
                 if (this._context.SaveChanges() > 0)
                 {
                     return RedirectToAction("CarIndex", "Car");

@@ -1,0 +1,36 @@
+﻿@model showroomManagement.Models.RegisteredCar
+
+<div class="mb-2 acd-group">
+    <div class="card-header bg-primary rounded-0">
+        <h5 class="mb-0">
+            <a href="#collapse6" class="btn-block text-white text-left acd-heading" data-toggle="collapse">RegisteredCar </a>
+        </h5>
+    </div>
+    <div id="collapse6" class="collapse show" data-parent="#accordionsimplefill">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <form asp-action="_RegisteredCar">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <select asp-for="CarId" class="form-control" asp-items="ViewBag.CarId"></select>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="RegistrationNo" placeholder="RegistrationNo" class="form-control" />
+                            <span asp-validation-for="RegistrationNo" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="RegistrationDate" placeholder="RegistrationDate" class="form-control" />
+                            <span asp-validation-for="RegistrationDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="RegisteredCar" class="btn btn-primary" />
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

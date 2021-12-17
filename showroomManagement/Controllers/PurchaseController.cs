@@ -25,7 +25,7 @@ namespace showroomManagement.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult PurchaseIndex(Purchase Purchase)
+        public IActionResult _Purchase(Purchase Purchase)
         {
             if (ModelState.IsValid)
             {

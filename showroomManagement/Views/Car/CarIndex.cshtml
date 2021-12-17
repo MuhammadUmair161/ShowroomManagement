@@ -1,12 +1,7 @@
-﻿@model showroomManagement.Models.Car
-
-@{
+﻿@{
     ViewData["Title"] = "CarIndex";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
-
-
-
 <!-- begin app-main -->
 <div class="app-main" id="main">
     <!-- begin container-fluid -->
@@ -17,117 +12,19 @@
                 <!-- begin page title -->
                 <div class="d-block d-lg-flex flex-nowrap align-items-center">
                     <div class="page-title mr-4 pr-4 border-right">
-                        <h1>Vendor</h1>
+                        <h1>Car</h1>
                     </div>
                     <div class="breadcrumb-bar align-items-center"></div>
                 </div>
                 <!-- end page title -->
-                <!---------------------->
                 <div class="card-body">
                     <div class="accordion" id="accordionsimplefill">
-                        <div class="mb-2 acd-group">
-                            <div class="card-header bg-primary rounded-0">
-                                <h5 class="mb-0">
-                                    <a href="#collapse" class="btn-block text-white text-left acd-heading" data-toggle="collapse">Add Vendor</a>
-                                </h5>
-                            </div>
-                            <div id="collapse" class="collapse show" data-parent="#accordionsimplefill">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <form asp-action="CarIndex">
-                                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                                <div class="form-group">
-                                                    <input asp-for="Name" placeholder="Name" class="form-control" />
-                                                    <span asp-validation-for="Name" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="Description" placeholder="Description" class="form-control" />
-                                                    <span asp-validation-for="Description" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="SittingCapacity" placeholder="Address" class="form-control" />
-                                                    <span asp-validation-for="SittingCapacity" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <select asp-for="CarTypeId" placeholder="CarType" class="form-control" asp-items="ViewBag.CarTypeId"></select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <select asp-for="CompanyId" placeholder="Company" class="form-control" asp-items="ViewBag.CompanyId"></select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="EngineCapacity" placeholder="EngineCapacity" class="form-control" />
-                                                    <span asp-validation-for="EngineCapacity" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="HoursePower" placeholder="HoursePower" class="form-control" />
-                                                    <span asp-validation-for="HoursePower"  class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="HasPowerSteering" placeholder="HasPowerSteering" class="form-control" />
-                                                    <span asp-validation-for="HasPowerSteering" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="HasAntiLockBreakingSystem" placeholder="HasAntiLockBreakingSystem" class="form-control" />
-                                                    <span asp-validation-for="HasAntiLockBreakingSystem" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="TransmissionType" placeholder="TransmissionType" class="form-control" />
-                                                    <span asp-validation-for="TransmissionType" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="HasPowerWindows" placeholder="HasPowerWindows" class="form-control" />
-                                                    <span asp-validation-for="HasPowerWindows" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="HasAirbags" placeholder="HasAirbags" class="form-control" />
-                                                    <span asp-validation-for="HasAirbags" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="HasAutoClimControl" placeholder="HasAutoClimControl" class="form-control" />
-                                                    <span asp-validation-for="HasAutoClimControl" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="HasFogLights" placeholder="HasFogLights" class="form-control" />
-                                                    <span asp-validation-for="HasFogLights" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="HasAlloyRims" placeholder="HasAlloyRims" class="form-control" />
-                                                    <span asp-validation-for="HasAlloyRims" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="HasCruiseControl" placeholder="HasCruiseControl" class="form-control" />
-                                                    <span asp-validation-for="HasCruiseControl" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="IsHybrid" placeholder="IsHybrid" class="form-control" />
-                                                    <span asp-validation-for="IsHybrid" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input asp-for="CarImage1" class="form-control" />
-                                                    <span asp-validation-for="CarImage1" class="text-danger"></span>
-                                                </div>
-                                                @*<div class="form-group">
-                                                    <label asp-for="CarImage2" class="control-label"></label>
-                                                    <input asp-for="CarImage2" class="form-control" />
-                                                    <span asp-validation-for="CarImage2" class="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label asp-for="CarImage3" class="control-label"></label>
-                                                    <input asp-for="CarImage3" class="form-control" />
-                                                    <span asp-validation-for="CarImage3" class="text-danger"></span>
-                                                </div>*@
-
-                                                <div class="form-group">
-                                                    <input type="submit" value="Add Car" class="btn btn-primary" />
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                        <partial name="_NewCar"></partial>
+                        <partial name="_UsedCar"></partial>
+                        <partial name="_RegisteredCar"></partial>
+                        <partial name="_Car"></partial>
+                        <partial name="_CarType"></partial>
+                        <partial name="_Company"></partial>
                     </div>
                 </div>
             </div>

@@ -12,8 +12,8 @@ namespace showroomManagement.Models
         public string OrderedBy { get; set; }
         public int? OrdereAccessoryId { get; set; }
         public decimal? TotalAmount { get; set; }
-        public DateTime? OrderDate { get; set; }
         public bool? Status { get; set; }
+        public DateTime? OrderDate { get; set; }
         public DateTime? DeliveryDate { get; set; }
 
         public virtual Accessory OrdereAccessory { get; set; }

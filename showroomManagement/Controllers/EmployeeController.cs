@@ -20,7 +20,7 @@ namespace showroomManagement.Controllers
             this._webHostEnvironment = WebHostEnvironment;
         }
 
-        public IActionResult Index()
+        public IActionResult EmployeeIndex()
         {
             return View();
         }
@@ -33,7 +33,7 @@ namespace showroomManagement.Controllers
             return View(list);
         }
         [HttpPost]
-        public IActionResult index(Employee employee)
+        public IActionResult _Employee(Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -41,7 +41,7 @@ namespace showroomManagement.Controllers
                 this._context.Employees.Add(employee);
                 if (this._context.SaveChanges() > 0)
                 {
-                    return RedirectToAction("index","Employee");
+                    return RedirectToAction("EmployeeIndex", "Employee");
                 }
             }
             return View();

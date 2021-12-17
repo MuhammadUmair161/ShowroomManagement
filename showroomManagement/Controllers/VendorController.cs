@@ -24,7 +24,7 @@ namespace showroomManagement.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult VendorIndex(Vendor vendor)
+        public IActionResult _Vendor(Vendor vendor)
         {
             if (ModelState.IsValid)
             {

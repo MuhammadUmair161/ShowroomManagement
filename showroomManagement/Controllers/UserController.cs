@@ -8,41 +8,48 @@ using System.Threading.Tasks;
 
 namespace showroomManagement.Controllers
 {
-    public class AccessoryController : Controller
+    public class UserController : Controller
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly ShrowroomDbContext _context;
-        public AccessoryController(ShrowroomDbContext context, IWebHostEnvironment WebHostEnvironment)
+        public UserController(ShrowroomDbContext context, IWebHostEnvironment WebHostEnvironment)
         {
             this._context = context;
             this._webHostEnvironment = WebHostEnvironment;
         }
-        public IActionResult AccessoryIndex()
+
+        public IActionResult CustomerDetailIndex()
         {
             return View();
         }
+
         [HttpPost]
-        public IActionResult _Accessory(Accessory accessory)
+        public IActionResult _CustomerDetail(CustomerDetail customer)
         {
             if (ModelState.IsValid)
             {
-                this._context.Accessories.Add(accessory);
+                this._context.CustomerDetails.Add(customer);
                 if (this._context.SaveChanges() > 0)
                 {
-                    return RedirectToAction("AccessoryIndex", "Accessory");
+                    //return RedirectToAction("AccessoryIndex", "Accessory");
                 }
             }
             return View();
         }
+        public IActionResult OrderDetail()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public IActionResult _AccessoriesStock(AccessoriesStock accessoriesStock)
+        public IActionResult _Order(Order order)
         {
             if (ModelState.IsValid)
             {
-                this._context.AccessoriesStocks.Add(accessoriesStock);
+                this._context.Orders.Add(order);
                 if (this._context.SaveChanges() > 0)
                 {
-                    return RedirectToAction("AccessoryIndex", "Accessory");
+                    //return RedirectToAction("AccessoryIndex", "Accessory");
                 }
             }
             return View();

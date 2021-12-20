@@ -27,7 +27,7 @@ namespace showroomManagement.Controllers
 
 
         // GET: EmployeeController
-        public ActionResult _EmployeeList()
+        public ActionResult _EmployeeDetail()
         {
             var list = this._context.Employees.ToList();
             return View(list);
@@ -37,7 +37,7 @@ namespace showroomManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                //employee.ImagePath = this.GetImage(employee);
+                employee.ImagePath = this.GetImage(employee);
                 this._context.Employees.Add(employee);
                 if (this._context.SaveChanges() > 0)
                 {
@@ -47,17 +47,17 @@ namespace showroomManagement.Controllers
             return View();
         }
 
-        //private string GetImage(Employee employee)
-        //{
-        //    string root = "Image/";
-        //    root += Guid.NewGuid().ToString() + employee.Image.FileName;
-        //    string myDir = this._webHostEnvironment.WebRootPath;
-        //    string[] myArray = { myDir, root };
-        //    string server = Path.Combine(myArray);
-        //    employee.Image.CopyTo(new FileStream(server, FileMode.Create));
+        private string GetImage(Employee employee)
+        {
+            string root = "Image/";
+            root += Guid.NewGuid().ToString() + employee.Image.FileName;
+            string myDir = this._webHostEnvironment.WebRootPath;
+            string[] myArray = { myDir, root };
+            string server = Path.Combine(myArray);
+            employee.Image.CopyTo(new FileStream(server, FileMode.Create));
 
-        //    return root;
-        //}
+            return root;
+        }
 
         // GET: EmployeeController/Details/5
         public ActionResult Details(int id)

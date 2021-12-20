@@ -54,6 +54,19 @@ namespace showroomManagement.Controllers
             }
             return View();
         }
+        [HttpPost]
+        public IActionResult _Interst(Interst interst)
+        {
+            if (ModelState.IsValid)
+            {
+                this._context.Intersts.Add(interst);
+                if (this._context.SaveChanges() > 0)
+                {
+                    //return RedirectToAction("AccessoryIndex", "Accessory");
+                }
+            }
+            return View();
+        }
 
     }
 }

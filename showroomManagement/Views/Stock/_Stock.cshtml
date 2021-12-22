@@ -1,28 +1,30 @@
 ﻿@model showroomManagement.Models.Stock
 
+
 <div class="mb-2 acd-group">
     <div class="card-header bg-primary rounded-0">
         <h5 class="mb-0">
             <a href="#collapse" class="btn-block text-white text-left acd-heading" data-toggle="collapse">Add Stock</a>
         </h5>
     </div>
-    <div id="collapse" class="collapse show" data-parent="#accordionsimplefill">
+    <div id="collapse" class="collapse" data-parent="#accordionsimplefill">
         <div class="card-body">
-            <div class="row col-md-12">
+            <div class="row vw-100">
                 <form asp-action="_Stock">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
+                        <label asp-for="CarId" class="control-label"></label>
                         <select asp-for="CarId" class="form-control" asp-items="ViewBag.CarId"></select>
                     </div>
                     <div class="form-group">
-                        <input asp-for="Available" placeholder="Available" class="form-control" />
+                        <label asp-for="Available" class="control-label"></label>
+                        <input asp-for="Available" class="form-control" />
                         <span asp-validation-for="Available" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <input type="submit" value="Add Stock" class="btn btn-primary" />
                     </div>
                 </form>
-
             </div>
         </div>
     </div>

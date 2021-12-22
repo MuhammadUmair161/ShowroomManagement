@@ -11,6 +11,6 @@ namespace showroomManagement.Models
         public string UserId { get; set; }
         public bool? IsNotified { get; set; }
 
-        public virtual AspNetUser User { get; set; }
+        //public virtual AspNetUser User { get; set; }
     }
 }

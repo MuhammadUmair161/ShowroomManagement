@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using showroomManagement.Models;
 using System;
 using System.Collections.Generic;
@@ -20,26 +21,25 @@ namespace showroomManagement.Controllers
             this._webHostEnvironment = WebHostEnvironment;
         }
 
-        public IActionResult EmployeeIndex()
+        public async Task<IActionResult> EmployeeIndex()
         {
-            return View();
+            return View(await _context.Employees.ToListAsync());
         }
 
 
         // GET: EmployeeController
-        public ActionResult _EmployeeDetail()
+        public async Task<IActionResult> _EmployeeDetail()
         {
-            var list = this._context.Employees.ToList();
-            return View(list);
+            return View(await _context.Employees.ToListAsync());
         }
         [HttpPost]
-        public IActionResult _Employee(Employee employee)
+        public async Task<IActionResult> _Employee(Employee employee)
         {
             if (ModelState.IsValid)
             {
                 employee.ImagePath = this.GetImage(employee);
                 this._context.Employees.Add(employee);
-                if (this._context.SaveChanges() > 0)
+                if (await this._context.SaveChangesAsync() > 0)
                 {
                     return RedirectToAction("EmployeeIndex", "Employee");
                 }

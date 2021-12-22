@@ -36,7 +36,7 @@ namespace showroomManagement
             {
                 x.Password.RequireDigit = true;
                 x.Password.RequiredLength = 6;
-                //x.SignIn.RequireConfirmedEmail = true;
+                x.SignIn.RequireConfirmedEmail = true;
                 x.Lockout.MaxFailedAccessAttempts = 2;
                 x.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
             });
@@ -64,7 +64,7 @@ namespace showroomManagement
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=dashboard}/{action=Index}/{id?}");
             });
         }
     }

@@ -6,7 +6,7 @@
             <a href="#collapse" class="btn-block text-white text-left acd-heading" data-toggle="collapse">Add Car</a>
         </h5>
     </div>
-    <div id="collapse" class="collapse show" data-parent="#accordionsimplefill">
+    <div id="collapse" class="collapse" data-parent="#accordionsimplefill">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
@@ -21,7 +21,7 @@
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <input asp-for="SittingCapacity" placeholder="Address" class="form-control" />
+                            <input asp-for="SittingCapacity" placeholder="SittingCapacity" class="form-control" />
                             <span asp-validation-for="SittingCapacity" class="text-danger"></span>
                         </div>
                         <div class="form-group">
@@ -39,7 +39,7 @@
                             <span asp-validation-for="HoursePower" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <input asp-for="HasPowerSteering" placeholder="HasPowerSteering" class="form-control" />
+                            <input asp-for="HasPowerSteering" class="form-control" />
                             <span asp-validation-for="HasPowerSteering" class="text-danger"></span>
                         </div>
                         <div class="form-group">
@@ -79,8 +79,8 @@
                             <span asp-validation-for="IsHybrid" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <input asp-for="CarImage1" class="form-control" />
-                            <span asp-validation-for="CarImage1" class="text-danger"></span>
+                            <input asp-for="Image1" class="form-control" />
+                            <span asp-validation-for="Image1" class="text-danger"></span>
                         </div>
                         @*<div class="form-group">
                                 <label asp-for="CarImage2" class="control-label"></label>

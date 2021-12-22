@@ -22,6 +22,6 @@ namespace showroomManagement.Models
 
         public virtual Car Car { get; set; }
         public virtual CustomerDetail Customer { get; set; }
-        public virtual AspNetUser InvoiceGeneratedByNavigation { get; set; }
+        //public virtual AspNetUser InvoiceGeneratedByNavigation { get; set; }
     }
 }

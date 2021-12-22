@@ -17,6 +17,6 @@ namespace showroomManagement.Models
         public DateTime? DeliveryDate { get; set; }
 
         public virtual Accessory OrdereAccessory { get; set; }
-        public virtual AspNetUser OrderedByNavigation { get; set; }
+        //public virtual AspNetUser OrderedByNavigation { get; set; }
     }
 }

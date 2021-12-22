@@ -54,6 +54,7 @@ namespace showroomManagement.Controllers
                 else
                 {
                     var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //string Ctokken = Url.Action("ConfirmEmail","Accounts")
                     if (!string.IsNullOrEmpty(token))
                     {
                         this.sendEmailConfirm(user, token);
@@ -101,13 +102,13 @@ namespace showroomManagement.Controllers
         [HttpGet]
         public async Task<IActionResult> ConfirmEmail(string userId, string token)
         {
-            if(userId==null||token==null)
+            if (userId == null || token == null)
             {
                 return RedirectToAction("index", "home");
             }
-            var user = await _userManager.FindByEmailAsync(userId);
-            var Result = await _userManager.ConfirmEmailAsync(user,token);
-            if(Result.Succeeded)
+            var user = await _userManager.FindByIdAsync(userId);
+            var Result = await _userManager.ConfirmEmailAsync(user, token);
+            if (Result.Succeeded)
             {
                 return RedirectToAction("index", "home");
             }

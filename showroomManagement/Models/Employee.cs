@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace showroomManagement.Models
 {
+    [Table("Employee")]
     public partial class Employee
     {
         public int Id { get; set; }

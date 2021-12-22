@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using showroomManagement.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,6 +32,9 @@ namespace showroomManagement.Controllers
 
         public IActionResult CarIndex()
         {
+            ViewData["CarId"] = new SelectList(_context.Cars,"Id", "Name");
+            ViewData["CarTypeId"] = new SelectList(_context.CarTypes,"Id", "Name");
+            ViewData["CompanyId"] = new SelectList(_context.Companies,"Id", "Name");
             return View();
         }
         [HttpPost]
@@ -37,14 +42,29 @@ namespace showroomManagement.Controllers
         {
             if (ModelState.IsValid)
             {
+                car.CarImage1= this.GetImage(car);
                 this._context.Cars.Add(car);
                 if (this._context.SaveChanges() > 0)
                 {
                     return RedirectToAction("CarIndex", "Car");
                 }
             }
+            ViewData["CarTypeId"] = new SelectList(_context.CarTypes, "Id", "Name");
+            ViewData["CompanyId"] = new SelectList(_context.Companies, "Id", "Name");
             return View();
         }
+        private string GetImage(Car car)
+        {
+            string root = "Image/";
+            root += Guid.NewGuid().ToString() + car.Image1.FileName;
+            string myDir = this._webHostEnvironment.WebRootPath;
+            string[] myArray = { myDir, root };
+            string server = Path.Combine(myArray);
+            car.Image1.CopyTo(new FileStream(server, FileMode.Create));
+
+            return root;
+        }
+
         [HttpPost]
         public IActionResult _CarType(CarType carType)
         {

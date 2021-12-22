@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace showroomManagement.Models
 {
+    [Table("Car")]
     public partial class Car
     {
         public Car()
@@ -38,6 +41,14 @@ namespace showroomManagement.Models
         public string CarImage1 { get; set; }
         public string CarImage2 { get; set; }
         public string CarImage3 { get; set; }
+
+        [NotMapped]
+        public IFormFile Image1 { get; set; }
+        [NotMapped]
+        public IFormFile Image2 { get; set; }
+        [NotMapped]
+        public IFormFile Image3 { get; set; }
+
 
         public virtual CarType CarType { get; set; }
         public virtual Company Company { get; set; }

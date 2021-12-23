@@ -24,7 +24,7 @@ namespace showroomManagement.Controllers
         }
 
         [HttpPost]
-        public IActionResult _CustomerDetail(CustomerDetail customer)
+        public IActionResult CustomerDetail(CustomerDetail customer)
         {
             if (ModelState.IsValid)
             {

@@ -10,7 +10,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <form asp-action="_Car">
+                    <form asp-action="_car" method="post" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
                             <input asp-for="Name" placeholder="Name" class="form-control" />
@@ -21,7 +21,7 @@
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <input asp-for="SittingCapacity" placeholder="SittingCapacity" class="form-control" />
+                            <input asp-for="SittingCapacity" type="text" placeholder="SittingCapacity" class="form-control" />
                             <span asp-validation-for="SittingCapacity" class="text-danger"></span>
                         </div>
                         <div class="form-group">
@@ -31,67 +31,71 @@
                             <select asp-for="CompanyId" placeholder="Company" class="form-control" asp-items="ViewBag.CompanyId"></select>
                         </div>
                         <div class="form-group">
-                            <input asp-for="EngineCapacity" placeholder="EngineCapacity" class="form-control" />
+                            <input asp-for="EngineCapacity"type="text" placeholder="EngineCapacity" class="form-control" />
                             <span asp-validation-for="EngineCapacity" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <input asp-for="HoursePower" placeholder="HoursePower" class="form-control" />
+                            <input asp-for="HoursePower" type="text" placeholder="HoursePower" class="form-control" />
                             <span asp-validation-for="HoursePower" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <input asp-for="HasPowerSteering" class="form-control" />
-                            <span asp-validation-for="HasPowerSteering" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="HasAntiLockBreakingSystem" placeholder="HasAntiLockBreakingSystem" class="form-control" />
-                            <span asp-validation-for="HasAntiLockBreakingSystem" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="TransmissionType" placeholder="TransmissionType" class="form-control" />
-                            <span asp-validation-for="TransmissionType" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="HasPowerWindows" placeholder="HasPowerWindows" class="form-control" />
-                            <span asp-validation-for="HasPowerWindows" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="HasAirbags" placeholder="HasAirbags" class="form-control" />
-                            <span asp-validation-for="HasAirbags" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="HasAutoClimControl" placeholder="HasAutoClimControl" class="form-control" />
-                            <span asp-validation-for="HasAutoClimControl" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="HasFogLights" placeholder="HasFogLights" class="form-control" />
-                            <span asp-validation-for="HasFogLights" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="HasAlloyRims" placeholder="HasAlloyRims" class="form-control" />
-                            <span asp-validation-for="HasAlloyRims" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="HasCruiseControl" placeholder="HasCruiseControl" class="form-control" />
-                            <span asp-validation-for="HasCruiseControl" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="IsHybrid" placeholder="IsHybrid" class="form-control" />
-                            <span asp-validation-for="IsHybrid" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
                             <input asp-for="Image1" class="form-control" />
-                            <span asp-validation-for="Image1" class="text-danger"></span>
                         </div>
-                        @*<div class="form-group">
-                                <label asp-for="CarImage2" class="control-label"></label>
-                                <input asp-for="CarImage2" class="form-control" />
-                                <span asp-validation-for="CarImage2" class="text-danger"></span>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-check">
+                                    <input asp-for="HasPowerSteering" class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" /><label class="form-check-label" for="flexCheckDefault1">HasPowerSteering</label>
+                                    <span asp-validation-for="HasPowerSteering" class="text-danger"></span>
+                                </div>
+                                <div class="form-check">
+                                    <input asp-for="HasAntiLockBreakingSystem" class="form-check-input" type="checkbox" value="" id="flexCheckDefault2" /><label class="form-check-label" for="flexCheckDefault2">HasAntiLockBreakingSystem</label>
+                                    <span asp-validation-for="HasAntiLockBreakingSystem" class="text-danger"></span>
+                                </div>
+                                <div class="form-check">
+                                    <input asp-for="TransmissionType" class="form-check-input" type="checkbox" value="" id="flexCheckDefault3" /><label class="form-check-label" for="flexCheckDefault3">TransmissionType</label>
+                                    <span asp-validation-for="TransmissionType" class="text-danger"></span>
+                                </div>
+
                             </div>
-                            <div class="form-group">
-                                <label asp-for="CarImage3" class="control-label"></label>
-                                <input asp-for="CarImage3" class="form-control" />
-                                <span asp-validation-for="CarImage3" class="text-danger"></span>
-                            </div>*@
+                            <div class="col-md-3">
+                                <div class="form-check">
+                                    <input asp-for="HasPowerWindows" class="form-check-input" type="checkbox" value="" id="flexCheckDefault4" /><label class="form-check-label" for="flexCheckDefault4">HasPowerWindows</label>
+                                    <span asp-validation-for="HasPowerWindows" class="text-danger"></span>
+                                </div>
+                                <div class="form-check">
+                                    <input asp-for="HasAirbags" class="form-check-input" type="checkbox" value="" id="flexCheckDefault5" /><label class="form-check-label" for="flexCheckDefault5">HasAirbags</label>
+                                    <span asp-validation-for="HasAirbags" class="text-danger"></span>
+                                </div>
+                                <div class="form-check">
+                                    <input asp-for="HasAutoClimControl" class="form-check-input" type="checkbox" value="" id="flexCheckDefault6" /><label class="form-check-label" for="flexCheckDefault6">HasAutoClimControl</label>
+                                    <span asp-validation-for="HasAutoClimControl" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check">
+                                    <input asp-for="HasFogLights" class="form-check-input" type="checkbox" value="" id="flexCheckDefault7" /><label class="form-check-label" for="flexCheckDefault7">HasFogLights</label>
+                                    <span asp-validation-for="HasFogLights" class="text-danger"></span>
+                                </div>
+                                <div class="form-check">
+                                    <input asp-for="HasAlloyRims" class="form-check-input" type="checkbox" value="" id="flexCheckDefault8" /><label class="form-check-label" for="flexCheckDefault8">HasAlloyRims</label>
+                                    <span asp-validation-for="HasAlloyRims" class="text-danger"></span>
+                                </div>
+                                <div class="form-check">
+                                    <input asp-for="HasCruiseControl" class="form-check-input" type="checkbox" value="" id="flexCheckDefault9" /><label class="form-check-label" for="flexCheckDefault9">HasCruiseControl</label>
+                                    <span asp-validation-for="HasCruiseControl" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check">
+                                    <input asp-for="IsHybrid" class="form-check-input" type="checkbox" value="" id="flexCheckDefault10" /><label class="form-check-label" for="flexCheckDefault10">IsHybrid</label>
+                                    <span asp-validation-for="IsHybrid" class="text-danger"></span>
+                                </div>
+
+                            </div>
+
+                        </div>
 
                         <div class="form-group">
                             <input type="submit" value="Add Car" class="btn btn-primary" />
@@ -103,3 +107,4 @@
         </div>
     </div>
 </div>
+

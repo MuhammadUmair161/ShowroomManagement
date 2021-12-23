@@ -1,0 +1,112 @@
+﻿@model IEnumerable<showroomManagement.Models.Employee>
+
+@{
+    ViewData["Title"] = "EmployeeDetail";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<!-- begin app-main -->
+<div class="app-main" id="main">
+    <!-- begin container-fluid -->
+    <div class="container-fluid">
+        <!-- begin row -->
+        <div class="row">
+            <div class="col-md-12 m-b-30">
+                <!-- begin page title -->
+                <div class="d-block d-lg-flex flex-nowrap align-items-center">
+                    <div class="page-title mr-4 pr-4 border-right">
+                        <h1>EmployeeDetail</h1>
+                    </div>
+                    <div class="breadcrumb-bar align-items-center"></div>
+                </div>
+                <!-- end page title -->
+                <!---------------------->
+                <div class="card-body">
+                    <div class="accordion" id="accordionsimplefill">
+                        <table class="table" id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ImagePath)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FirstName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LastName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Address)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Qualification)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Department)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DateOfBirth)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Contact)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Cnic)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                             <img src="@Html.DisplayFor(modelItem => item.ImagePath)" style="width:50px;height:50px;" class="rounded-circle border-danger border-5" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LastName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Address)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Qualification)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Department)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DateOfBirth)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Contact)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Cnic)
+                                        </td>
+                                        <td>
+                                            <a asp-action="EmployeeUpdate" asp-route-id="@item.Id">Update</a>
+                                            <a asp-action="EmployeeDelete" asp-route-id="@item.Id">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end container-fluid -->
+</div>
+<!-- end app-main -->

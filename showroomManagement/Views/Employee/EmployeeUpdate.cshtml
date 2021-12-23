@@ -1,0 +1,94 @@
+﻿@model showroomManagement.Models.Employee
+
+@{
+    ViewData["Title"] = "EmployeeUpdate";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+<!-- begin app-main -->
+<div class="app-main" id="main">
+    <!-- begin container-fluid -->
+    <div class="container-fluid">
+        <!-- begin row -->
+        <div class="row">
+            <div class="col-md-12 m-b-30">
+                <!-- begin page title -->
+                <div class="d-block d-lg-flex flex-nowrap align-items-center">
+                    <div class="page-title mr-4 pr-4 border-right">
+                        <h1>EmployeeUpdate</h1>
+                    </div>
+                    <div class="breadcrumb-bar align-items-center"></div>
+                </div>
+                <!-- end page title -->
+                <!---------------------->
+                <div class="card-body">
+                    <div class="accordion" id="accordionsimplefill">
+                        <div class="mb-2 acd-group">
+                            <div class="card-header bg-primary rounded-0">
+                                <h5 class="mb-0">
+                                    <a href="#collapse" class="btn-block text-white text-left acd-heading" data-toggle="collapse">EmployeeUpdate</a>
+                                </h5>
+                            </div>
+                            <div id="collapse" class="collapse show" data-parent="#accordionsimplefill">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form asp-action="EmployeeUpdate" method="post" enctype="multipart/form-data">
+                                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                <div class="form-group clearfix">
+                                                    <input type="text" class="form-control" asp-for="FirstName" placeholder="Frist Name" aria-label="Frist Name">
+                                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group clearfix">
+                                                    <input name="LastName" type="text" class="form-control" asp-for="LastName" placeholder="Last Name" aria-label="Last Name">
+                                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group clearfix">
+                                                    <input name="Email" type="Email" class="form-control" asp-for="Email" placeholder="Email" aria-label="Email">
+                                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group clearfix">
+                                                    <input type="text" class="form-control" asp-for="Cnic" placeholder="CNIC">
+                                                    <span asp-validation-for="Cnic" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group clearfix">
+                                                    <input type="text" class="form-control" asp-for="Contact" placeholder="Contact">
+                                                    <span asp-validation-for="Contact" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group clearfix">
+                                                    <input name="Address" type="text" class="form-control" asp-for="Address" placeholder="Address" aria-label="Address">
+                                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group clearfix">
+                                                    <input type="text" class="form-control" asp-for="Qualification" placeholder="Qualification">
+                                                    <span asp-validation-for="Qualification" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group clearfix">
+                                                    <input type="date" class="form-control " asp-for="DateOfBirth" placeholder="DateOfBirth">
+                                                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group clearfix">
+                                                    <input type="text" class="form-control" asp-for="Department" placeholder="Department">
+                                                    <span asp-validation-for="Department" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group clearfix">
+                                                    <input asp-for="Image">
+                                                    <span asp-validation-for="Image" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="submit" value="EmployeeUpdate" class="btn btn-primary" />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end container-fluid -->
+</div>
+<!-- end app-main -->

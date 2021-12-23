@@ -32,25 +32,27 @@ namespace showroomManagement.Controllers
 
         public IActionResult CarIndex()
         {
-            ViewData["CarId"] = new SelectList(_context.Cars,"Id", "Name");
+            ViewData["CarId"] = new SelectList(_context.Cars, "Id", "Name");
             ViewData["CarTypeId"] = new SelectList(_context.CarTypes,"Id", "Name");
             ViewData["CompanyId"] = new SelectList(_context.Companies,"Id", "Name");
             return View();
         }
+        
         [HttpPost]
-        public IActionResult _Car(Car car)
+        public async Task<IActionResult> _Car(Car car)
         {
             if (ModelState.IsValid)
             {
-                car.CarImage1= this.GetImage(car);
+                if(car.Image1!=null)
+                {
+                    car.CarImage1 = this.GetImage(car);
+                }
                 this._context.Cars.Add(car);
-                if (this._context.SaveChanges() > 0)
+                if (await this._context.SaveChangesAsync() > 0)
                 {
                     return RedirectToAction("CarIndex", "Car");
                 }
             }
-            ViewData["CarTypeId"] = new SelectList(_context.CarTypes, "Id", "Name");
-            ViewData["CompanyId"] = new SelectList(_context.Companies, "Id", "Name");
             return View();
         }
         private string GetImage(Car car)
@@ -131,6 +133,11 @@ namespace showroomManagement.Controllers
             return View();
         }
 
+        [HttpPost]
+        public string myAction(Car car)
+        {
+            return "";
+        }
 
 
 

@@ -26,18 +26,18 @@ namespace showroomManagement.Models
         public int SittingCapacity { get; set; }
         public int? CarTypeId { get; set; }
         public int? CompanyId { get; set; }
-        public decimal EngineCapacity { get; set; }
+        public decimal? EngineCapacity { get; set; }
         public decimal? HoursePower { get; set; }
-        public bool? HasPowerSteering { get; set; }
-        public bool? HasAntiLockBreakingSystem { get; set; }
-        public bool? TransmissionType { get; set; }
-        public bool? HasPowerWindows { get; set; }
-        public bool? HasAirbags { get; set; }
-        public bool? HasAutoClimControl { get; set; }
-        public bool? HasFogLights { get; set; }
-        public bool? HasAlloyRims { get; set; }
-        public bool? HasCruiseControl { get; set; }
-        public bool? IsHybrid { get; set; }
+        public bool HasPowerSteering { get; set; }
+        public bool HasAntiLockBreakingSystem { get; set; }
+        public bool TransmissionType { get; set; }
+        public bool HasPowerWindows { get; set; }
+        public bool HasAirbags { get; set; }
+        public bool HasAutoClimControl { get; set; }
+        public bool HasFogLights { get; set; }
+        public bool HasAlloyRims { get; set; }
+        public bool HasCruiseControl { get; set; }
+        public bool IsHybrid { get; set; }
         public string CarImage1 { get; set; }
         public string CarImage2 { get; set; }
         public string CarImage3 { get; set; }

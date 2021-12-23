@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace showroomManagement.Models
 {
+    [Table("NewCar")]
     public partial class NewCar
     {
         public int Id { get; set; }

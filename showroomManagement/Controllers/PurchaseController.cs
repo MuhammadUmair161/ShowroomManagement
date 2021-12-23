@@ -26,9 +26,6 @@ namespace showroomManagement.Controllers
         {
             ViewData["CarId"] = new SelectList(_context.Cars, "Id", "Name");
             ViewData["VendorId"] = new SelectList(_context.Vendors, "Id", "Name");
-
-            //var shrowroomDbContext = _context.Purchases.Include(i => i.Car).Include(i => i.Vendor);
-            //return View(await shrowroomDbContext.ToListAsync());
             return View();
         }
 

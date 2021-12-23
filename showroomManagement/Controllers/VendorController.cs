@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using showroomManagement.Models;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,24 @@ namespace showroomManagement.Controllers
         {
             return View();
         }
+
+        public async Task<IActionResult> VendorDetail()
+        {
+            return View(await _context.Vendors.ToListAsync());
+        }
+
+        public async Task<IActionResult> VendorDelete(int? id)
+        {
+            var Vendor = await _context.Vendors.FirstOrDefaultAsync(m => m.Id == id);
+            this._context.Entry(Vendor).State = EntityState.Deleted;
+            if (await this._context.SaveChangesAsync() > 0)
+            {
+                return RedirectToAction("VendorDetail", "Vendor");
+            }
+            return View();
+        }
+
+
         [HttpPost]
         public IActionResult _Vendor(Vendor vendor)
         {

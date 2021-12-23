@@ -26,19 +26,21 @@ namespace showroomManagement.Controllers
         }
 
         [HttpPost]
-        public IActionResult _Accessory(Accessory accessory)
+        public async Task<IActionResult> _Accessory(Accessory accessory)
         {
             if (ModelState.IsValid)
             {
                 accessory.ImagePath = this.GetImage(accessory);
                 this._context.Accessories.Add(accessory);
-                if (this._context.SaveChanges() > 0)
+                if (await this._context.SaveChangesAsync() > 0)
                 {
                     return RedirectToAction("AccessoryIndex", "Accessory");
                 }
             }
             return View();
         }
+
+
         private string GetImage(Accessory accessory)
         {
             string root = "Image/";

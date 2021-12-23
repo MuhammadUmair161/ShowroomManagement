@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="~/Theme/assets/img/favicon.ico" type="image/x-icon">
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
     <!-- plugin stylesheets -->
     <link rel="stylesheet" type="text/css" href="~/Theme/dashboard/assets/css/vendors.css" />
     <!-- app style -->
@@ -363,24 +364,28 @@
                         <ul class="metismenu " id="sidebarNav">
                             <li class="nav-static-title">Personal</li>
                             <li><a asp-controller="home" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-home"></i><span class="nav-title">Go to Web</span></a> </li>
-                            @*<li>
-                                <a class="has-arrow" asp-controller="dashboard" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Car</span></a>
+                            <li>
+                                <a class="has-arrow" asp-controller="Employee" asp-action="EmployeeDetail" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Employee</span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li> <a href="#">Car</a> </li>
+                                    <li> <a asp-controller="Employee" asp-action="EmployeeDetail">EmployeeDetail</a> </li>
+                                    <li> <a asp-controller="Employee" asp-action="EmployeeIndex">Add Employee</a> </li>
                                 </ul>
-                            </li>*@
+                            </li>
+                            <li>
+                                <a class="has-arrow" asp-controller="Vendor" asp-action="VendorDetail" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Vendor</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li> <a asp-controller="Vendor" asp-action="VendorDetail">VendorDetail</a> </li>
+                                    <li> <a asp-controller="Vendor" asp-action="VendorIndex">Add Vendor</a> </li>
+                                </ul>
+                            </li>
 
                             <li><a asp-controller="Car" asp-action="CarIndex" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Car</span></a> </li>
                             <li><a asp-controller="Accessory" asp-action="AccessoryIndex" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Accessory</span></a> </li>
                             <li><a asp-controller="User" asp-action="CustomerDetailIndex" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">CustomerDetail</span></a> </li>
                             <li><a asp-controller="User" asp-action="OrderDetail" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">OrderDetail</span></a> </li>
-                            <li><a asp-controller="Employee" asp-action="EmployeeIndex" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Employee</span></a> </li>
-                            <li><a asp-controller="Vendor" asp-action="VendorIndex" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Vendor</span></a> </li>
                             <li><a asp-controller="Purchase" asp-action="PurchaseIndex" aria-expanded="false"><i class="nav-icon ti ti-credit-card"></i><span class="nav-title">Purchase</span></a> </li>
-                            <li><a asp-controller="Inventory" asp-action="Inventory" aria-expanded="false"><i class="nav-icon ti ti-credit-card"></i><span class="nav-title">Inventory</span></a> </li>
                             <li><a asp-controller="dashboard" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Chat</span></a> </li>
                             <li><a asp-controller="dashboard" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Calendar</span></a></li>
-                            <li><a asp-controller="dashboard" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-email"></i><span class="nav-title">Mail</span></a> </li>
                         </ul>
                     </div>
                     <!-- end sidebar-nav -->
@@ -414,8 +419,14 @@
     <script src="~/Theme/dashboard/assets/js/app.js"></script>
 
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @*<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>*@
+
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();  
+        });
+    </script>
     @RenderSection("Scripts", required: false)
 
 </body>

@@ -21,14 +21,14 @@ namespace showroomManagement.Controllers
             this._webHostEnvironment = WebHostEnvironment;
         }
 
-        public async Task<IActionResult> EmployeeIndex()
+        public IActionResult EmployeeIndex()
         {
-            return View(await _context.Employees.ToListAsync());
+            return View();
         }
 
 
         // GET: EmployeeController
-        public async Task<IActionResult> _EmployeeDetail()
+        public async Task<IActionResult> EmployeeDetail()
         {
             return View(await _context.Employees.ToListAsync());
         }
@@ -80,30 +80,52 @@ namespace showroomManagement.Controllers
             }
         }
 
-        // GET: EmployeeController/Edit/5
-        public ActionResult Edit(int id)
+  
+        public IActionResult EmployeeUpdate(int id)
         {
+            var item = this._context.Employees.Where(x => x.Id == id).FirstOrDefault();
+            return View(item);
+        }
+        // GET: EmployeeController/Edit/5
+        [HttpPost]
+        public async Task<IActionResult> EmployeeUpdate(Employee employee)
+        {
+            employee.ImagePath = this.GetImage(employee);
+            this._context.Entry(employee).State = EntityState.Modified;
+            if (await this._context.SaveChangesAsync() > 0)
+            {
+                return RedirectToAction("EmployeeDetail", "Employee");
+            }
             return View();
         }
 
         // POST: EmployeeController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> _EmployeeUpdate(int id, IFormCollection collection)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var employee = await _context.Employees.FindAsync(id);
+        //    if (employee == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View();
+        //}
 
         // GET: EmployeeController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> EmployeeDelete(int? id)
         {
+            var employee = await _context.Employees.FirstOrDefaultAsync(m => m.Id == id);
+            this._context.Entry(employee).State = EntityState.Deleted;
+            if (await this._context.SaveChangesAsync() > 0)
+            {
+                return RedirectToAction("EmployeeDetail", "Employee");
+            }
             return View();
         }
 

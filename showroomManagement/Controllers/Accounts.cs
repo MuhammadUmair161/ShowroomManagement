@@ -54,14 +54,29 @@ namespace showroomManagement.Controllers
                 else
                 {
                     var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //string Ctokken = Url.Action("ConfirmEmail","Accounts")
+                    string Ctokken = Url.Action("EmailConfirm", "Accounts", new { userId = user.Id, token = token }, protocol: HttpContext.Request.Scheme);
+                    ViewBag.token = Ctokken;
                     if (!string.IsNullOrEmpty(token))
                     {
                         this.sendEmailConfirm(user, token);
                     }
+
                     return RedirectToAction("Login", "Accounts");
 
                 }
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EmailConfirm(string userId, string token)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            var Result = await _userManager.ConfirmEmailAsync(user, token);
+            if (Result.Succeeded)
+            {
+                user.EmailConfirmed = true;
+                await _userManager.UpdateAsync(user);
             }
             return View();
         }
@@ -98,24 +113,6 @@ namespace showroomManagement.Controllers
             }
             return body;
         }
-
-        [HttpGet]
-        public async Task<IActionResult> ConfirmEmail(string userId, string token)
-        {
-            if (userId == null || token == null)
-            {
-                return RedirectToAction("index", "home");
-            }
-            var user = await _userManager.FindByIdAsync(userId);
-            var Result = await _userManager.ConfirmEmailAsync(user, token);
-            if (Result.Succeeded)
-            {
-                return RedirectToAction("index", "home");
-            }
-            return View();
-        }
-
-
 
         public IActionResult Login()
         {

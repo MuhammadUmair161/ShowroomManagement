@@ -1,36 +1,27 @@
 ﻿@model showroomManagement.Models.Accessory
 
-<div class="mb-2 acd-group">
-    <div class="card-header bg-primary rounded-0">
-        <h5 class="mb-0">
-            <a href="#collapse" class="btn-block text-white text-left acd-heading" data-toggle="collapse">Add Accessory</a>
-        </h5>
-    </div>
-    <div id="collapse" class="collapse" data-parent="#accordionsimplefill">
-        <div class="card-body">
-            <div class="row">
-                <form asp-action="_Accessory" class="w-100">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <input asp-for="Name" class="form-control" placeholder="Accessory Name" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input asp-for="Price" placeholder="Price" class="form-control" />
-                        <span asp-validation-for="Price" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input asp-for="Image" class="form-control" />
-                        <span asp-validation-for="Image" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="submit" value="Add Accessory" class="btn btn-primary" />
-                    </div>
-                </form>
+<h4>Accessory</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="_Accessory"  method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-
-        </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Image" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="_Accessory" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
 </div>
-

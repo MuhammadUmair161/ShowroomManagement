@@ -37,7 +37,10 @@ namespace showroomManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                employee.ImagePath = this.GetImage(employee);
+                if (employee.Image != null)
+                {
+                    employee.ImagePath = this.GetImage(employee);
+                }
                 this._context.Employees.Add(employee);
                 if (await this._context.SaveChangesAsync() > 0)
                 {
@@ -57,12 +60,6 @@ namespace showroomManagement.Controllers
             employee.Image.CopyTo(new FileStream(server, FileMode.Create));
 
             return root;
-        }
-
-        // GET: EmployeeController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
         }
 
         // POST: EmployeeController/Create
@@ -86,11 +83,13 @@ namespace showroomManagement.Controllers
             var item = this._context.Employees.Where(x => x.Id == id).FirstOrDefault();
             return View(item);
         }
-        // GET: EmployeeController/Edit/5
         [HttpPost]
         public async Task<IActionResult> EmployeeUpdate(Employee employee)
         {
-            employee.ImagePath = this.GetImage(employee);
+            if (employee.Image != null)
+            {
+                employee.ImagePath = this.GetImage(employee);
+            }
             this._context.Entry(employee).State = EntityState.Modified;
             if (await this._context.SaveChangesAsync() > 0)
             {
@@ -98,24 +97,6 @@ namespace showroomManagement.Controllers
             }
             return View();
         }
-
-        // POST: EmployeeController/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> _EmployeeUpdate(int id, IFormCollection collection)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var employee = await _context.Employees.FindAsync(id);
-        //    if (employee == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View();
-        //}
 
         // GET: EmployeeController/Delete/5
         public async Task<IActionResult> EmployeeDelete(int? id)

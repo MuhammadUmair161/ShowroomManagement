@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace showroomManagement.Models
 {
-    [Table("RegisteredCar")]
+    [Table("RegisteredCars")]
     public partial class RegisteredCar
     {
         public int Id { get; set; }

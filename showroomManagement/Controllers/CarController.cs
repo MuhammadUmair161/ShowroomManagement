@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using showroomManagement.Models;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,22 @@ namespace showroomManagement.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> CarDetail()
+        {
+            return View(await _context.Cars.ToListAsync());
+        }
+        public async Task<IActionResult> CarDelete(int? id)
+        {
+            var Car = await _context.Cars.FirstOrDefaultAsync(m => m.Id == id);
+            this._context.Entry(Car).State = EntityState.Deleted;
+            if (await this._context.SaveChangesAsync() > 0)
+            {
+                return RedirectToAction("CarDetail", "Car");
+            }
+            return View();
+        }
+
+
         private string GetImage(Car car)
         {
             string root = "Image/";
@@ -80,6 +97,21 @@ namespace showroomManagement.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> CarTypeDetail()
+        {
+            return View(await _context.CarTypes.ToListAsync());
+        }
+        public async Task<IActionResult> CarTypeDelete(int? id)
+        {
+            var CarType = await _context.CarTypes.FirstOrDefaultAsync(m => m.Id == id);
+            this._context.Entry(CarType).State = EntityState.Deleted;
+            if (await this._context.SaveChangesAsync() > 0)
+            {
+                return RedirectToAction("CarTypeDetail", "Car");
+            }
+            return View();
+        }
+
         [HttpPost]
         public IActionResult _Company(Company company)
         {
@@ -93,6 +125,22 @@ namespace showroomManagement.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> CompanyDetail()
+        {
+            return View(await _context.Companies.ToListAsync());
+        }
+        public async Task<IActionResult> CompanyDelete(int? id)
+        {
+            var Company = await _context.Companies.FirstOrDefaultAsync(m => m.Id == id);
+            this._context.Entry(Company).State = EntityState.Deleted;
+            if (await this._context.SaveChangesAsync() > 0)
+            {
+                return RedirectToAction("CompanyDetail", "Car");
+            }
+            return View();
+        }
+
+
         [HttpPost]
         public IActionResult _NewCar(NewCar newCar)
         {
@@ -106,6 +154,21 @@ namespace showroomManagement.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> NewCarDetail()
+        {
+            return View(await _context.NewCars.ToListAsync());
+        }
+        public async Task<IActionResult> NewCarDelete(int? id)
+        {
+            var NewCar = await _context.NewCars.FirstOrDefaultAsync(m => m.Id == id);
+            this._context.Entry(NewCar).State = EntityState.Deleted;
+            if (await this._context.SaveChangesAsync() > 0)
+            {
+                return RedirectToAction("NewCarDetail", "Car");
+            }
+            return View();
+        }
+
         [HttpPost]
         public IActionResult _UsedCar(UsedCar usedCar)
         {
@@ -119,6 +182,22 @@ namespace showroomManagement.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> UsedCarDetail()
+        {
+            return View(await _context.UsedCars.ToListAsync());
+        }
+        public async Task<IActionResult> UsedCarDelete(int? id)
+        {
+            var UsedCar = await _context.UsedCars.FirstOrDefaultAsync(m => m.Id == id);
+            this._context.Entry(UsedCar).State = EntityState.Deleted;
+            if (await this._context.SaveChangesAsync() > 0)
+            {
+                return RedirectToAction("UsedCarDetail", "Car");
+            }
+            return View();
+        }
+
+
         [HttpPost]
         public IActionResult _RegisteredCar(RegisteredCar registered)
         {
@@ -132,13 +211,20 @@ namespace showroomManagement.Controllers
             }
             return View();
         }
-
-        [HttpPost]
-        public string myAction(Car car)
+        public async Task<IActionResult> RegisteredCarDetail()
         {
-            return "";
+            return View(await _context.RegisteredCars.ToListAsync());
         }
-
+        public async Task<IActionResult> RegisteredCarDelete(int? id)
+        {
+            var RegisteredCar = await _context.RegisteredCars.FirstOrDefaultAsync(m => m.Id == id);
+            this._context.Entry(RegisteredCar).State = EntityState.Deleted;
+            if (await this._context.SaveChangesAsync() > 0)
+            {
+                return RedirectToAction("RegisteredCarDetail", "car");
+            }
+            return View();
+        }
 
 
         // GET: cars/Details/5

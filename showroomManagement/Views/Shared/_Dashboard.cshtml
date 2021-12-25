@@ -378,13 +378,37 @@
                                     <li> <a asp-controller="Vendor" asp-action="VendorIndex">Add Vendor</a> </li>
                                 </ul>
                             </li>
+                            <li>
+                                <a class="has-arrow" asp-controller="Accessories" asp-action="AccessoryDetail" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Accessory</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    @*<li> <a asp-controller="Accessories" asp-action="AccessoryDetail">AccessoryDetail</a> </li>*@
+                                    <li> <a asp-controller="Accessories" asp-action="AccessoryIndex">Add Accessory</a> </li>
+                                    <li> <a asp-controller="Accessories" asp-action="AccessoriesStockDetail">AccessoriesStockDetail</a> </li>
+                                    <li> <a asp-controller="Accessories" asp-action="AccessoryIndex">Add AccessoriesStock</a> </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="has-arrow" asp-controller="Purchase" asp-action="PurchaseDetail" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Inventory</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li> <a asp-controller="Purchase" asp-action="PurchaseDetail">PurchaseDetail</a> </li>
+                                    <li> <a asp-controller="Purchase" asp-action="PurchaseIndex">Add Purchase</a> </li>
+                                    <li> <a asp-controller="Stock" asp-action="StockDetail">StockDetail</a> </li>
+                                    <li> <a asp-controller="Stock" asp-action="StockIndex">Add Stock</a> </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="has-arrow" asp-controller="Car" asp-action="CarIndex" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Car</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li> <a asp-controller="Car" asp-action="CarIndex">Add Car</a> </li>
+                                    <li> <a asp-controller="Car" asp-action="CarDetail">CarDetail</a> </li>
+                                    <li> <a asp-controller="Car" asp-action="CarTypeDetail">CarTypeDetail</a> </li>
+                                    <li> <a asp-controller="Car" asp-action="RegisteredCarDetail">RegisteredCarDetail</a> </li>
+                                    <li> <a asp-controller="Car" asp-action="CompanyDetail">CompanyDetail</a> </li>
+                                </ul>
+                            </li>
 
-                            <li><a asp-controller="Car" asp-action="CarIndex" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Car</span></a> </li>
-                            <li><a asp-controller="Accessory" asp-action="AccessoryIndex" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Accessory</span></a> </li>
                             <li><a asp-controller="User" asp-action="CustomerDetailIndex" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">CustomerDetail</span></a> </li>
                             <li><a asp-controller="User" asp-action="OrderDetail" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">OrderDetail</span></a> </li>
-                            <li><a asp-controller="Purchase" asp-action="PurchaseIndex" aria-expanded="false"><i class="nav-icon ti ti-credit-card"></i><span class="nav-title">Purchase</span></a> </li>
-                            <li><a asp-controller="dashboard" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Chat</span></a> </li>
                             <li><a asp-controller="dashboard" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Calendar</span></a></li>
                         </ul>
                     </div>

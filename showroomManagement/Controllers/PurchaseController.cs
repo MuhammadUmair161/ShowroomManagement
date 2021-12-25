@@ -37,6 +37,22 @@ namespace showroomManagement.Controllers
         //    return View();
         //}
 
+        public async Task<IActionResult> PurchaseDetail()
+        {
+            return View(await _context.Purchases.ToListAsync());
+        }
+        public async Task<IActionResult> PurchaseDelete(int? id)
+        {
+            var Purchase = await _context.Purchases.FirstOrDefaultAsync(m => m.Id == id);
+            this._context.Entry(Purchase).State = EntityState.Deleted;
+            if (await this._context.SaveChangesAsync() > 0)
+            {
+                return RedirectToAction("PurchaseDetail", "Purchase");
+            }
+            return View();
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult _Purchase(Purchase Purchase)
@@ -46,7 +62,7 @@ namespace showroomManagement.Controllers
                  this._context.Purchases.Add(Purchase);
                 if (this._context.SaveChanges() > 0)
                 {
-                    return RedirectToAction("PurchaseIndex", "Purchase");
+                    return RedirectToAction("PurchaseDetail", "Purchase");
                 }
             }
             ViewData["CarId"] = new SelectList(_context.Cars, "Id", "Name", Purchase.CarId);

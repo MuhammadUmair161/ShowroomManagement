@@ -64,17 +64,17 @@ namespace showroomManagement.Models
                     .HasConstraintName("FK__Accessori__Acces__71D1E811");
             });
 
-            modelBuilder.Entity<Accessory>(entity =>
-            {
-                entity.Property(e => e.ImagePath).IsUnicode(false);
+            //modelBuilder.Entity<Accessory>(entity =>
+            //{
+            //    entity.Property(e => e.ImagePath).IsUnicode(false);
 
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+            //    entity.Property(e => e.Name)
+            //        .IsRequired()
+            //        .HasMaxLength(50)
+            //        .IsUnicode(false);
 
-                entity.Property(e => e.Price).HasColumnType("money");
-            });
+            //    entity.Property(e => e.Price).HasColumnType("money");
+            //});
 
             //modelBuilder.Entity<AspNetRole>(entity =>
             //{

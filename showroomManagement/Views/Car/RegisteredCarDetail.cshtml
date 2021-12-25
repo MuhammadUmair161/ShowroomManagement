@@ -1,11 +1,9 @@
-﻿@model IEnumerable<showroomManagement.Models.Vendor>
+﻿@model IEnumerable<showroomManagement.Models.RegisteredCar>
 
 @{
-    ViewData["Title"] = "VendorDetail";
+    ViewData["Title"] = "RegisteredCarDetail";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
-
-
 
 <!-- begin app-main -->
 <div class="app-main" id="main">
@@ -17,7 +15,7 @@
                 <!-- begin page title -->
                 <div class="d-block d-lg-flex flex-nowrap align-items-center">
                     <div class="page-title mr-4 pr-4 border-right">
-                        <h1>VendorDetail</h1>
+                        <h1>RegisteredCarDetail</h1>
                     </div>
                     <div class="breadcrumb-bar align-items-center"></div>
                 </div>
@@ -25,14 +23,17 @@
                 <!---------------------->
                 <div class="card-body">
                     <div class="accordion" id="accordionsimplefill">
-                        <table class="table">
+                        <table class="table" id="myTable">
                             <thead>
                                 <tr>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Name)
+                                        @Html.DisplayNameFor(model => model.RegistrationNo)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Address)
+                                        @Html.DisplayNameFor(model => model.RegistrationDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Car)
                                     </th>
                                     <th></th>
                                 </tr>
@@ -42,13 +43,16 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Name)
+                                            @Html.DisplayFor(modelItem => item.RegistrationNo)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Address)
+                                            @Html.DisplayFor(modelItem => item.RegistrationDate)
                                         </td>
                                         <td>
-                                            <a class="btn btn-danger" asp-action="VendorDelete" asp-route-id="@item.Id">Delete</a>
+                                            @Html.DisplayFor(modelItem => item.Car.Name)
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger" asp-action="RegisteredCarDelete" asp-route-id="@item.Id">Delete</a>
                                         </td>
                                     </tr>
                                 }

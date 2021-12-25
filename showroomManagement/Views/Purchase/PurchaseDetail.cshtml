@@ -1,7 +1,7 @@
-﻿@model IEnumerable<showroomManagement.Models.Employee>
+﻿@model IEnumerable<showroomManagement.Models.Purchase>
 
 @{
-    ViewData["Title"] = "EmployeeDetail";
+    ViewData["Title"] = "PurchaseDetail";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
@@ -15,7 +15,7 @@
                 <!-- begin page title -->
                 <div class="d-block d-lg-flex flex-nowrap align-items-center">
                     <div class="page-title mr-4 pr-4 border-right">
-                        <h1>EmployeeDetail</h1>
+                        <h1>PurchaseDetail</h1>
                     </div>
                     <div class="breadcrumb-bar align-items-center"></div>
                 </div>
@@ -27,34 +27,25 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.ImagePath)
+                                        @Html.DisplayNameFor(model => model.PurchaseDate)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.FirstName)
+                                        @Html.DisplayNameFor(model => model.Quantity)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.LastName)
+                                        @Html.DisplayNameFor(model => model.TotalAmount)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Address)
+                                        @Html.DisplayNameFor(model => model.AmountPaid)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Email)
+                                        @Html.DisplayNameFor(model => model.AmountDue)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Qualification)
+                                        @Html.DisplayNameFor(model => model.Car)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Department)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.DateOfBirth)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Contact)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Cnic)
+                                        @Html.DisplayNameFor(model => model.Vendor)
                                     </th>
                                     <th></th>
                                 </tr>
@@ -64,38 +55,30 @@
                                 {
                                     <tr>
                                         <td>
-                                             <img src="@Html.DisplayFor(modelItem => item.ImagePath)" style="width:50px;height:50px;" class="rounded-circle border-danger border-5" />
+                                            @Html.DisplayFor(modelItem => item.PurchaseDate)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.FirstName)
+                                            @Html.DisplayFor(modelItem => item.Quantity)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.LastName)
+                                            @Html.DisplayFor(modelItem => item.TotalAmount)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Address)
+                                            @Html.DisplayFor(modelItem => item.AmountPaid)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Email)
+                                            @Html.DisplayFor(modelItem => item.AmountDue)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Qualification)
+                                            @Html.DisplayFor(modelItem => item.Car.Name)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Department)
+                                            @Html.DisplayFor(modelItem => item.Vendor.Name)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.DateOfBirth)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Contact)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Cnic)
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success" asp-action="EmployeeUpdate" asp-route-id="@item.Id">Update</a>
-                                            <a class="btn btn-danger" asp-action="EmployeeDelete" asp-route-id="@item.Id">Delete</a>
+                                            <a class="btn btn-danger" asp-action="PurchaseDelete" asp-route-id="@item.Id">Delete</a>
+                                            @*<a asp-action="PurchaseUpdate" asp-route-id="@item.Id">Edit</a> |*@
+
                                         </td>
                                     </tr>
                                 }

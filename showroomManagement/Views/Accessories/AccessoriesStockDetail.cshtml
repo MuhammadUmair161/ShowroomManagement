@@ -1,11 +1,9 @@
-﻿@model IEnumerable<showroomManagement.Models.Vendor>
+﻿@model IEnumerable<showroomManagement.Models.AccessoriesStock>
 
 @{
-    ViewData["Title"] = "VendorDetail";
+    ViewData["Title"] = "AccessoriesStockDetail";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
-
-
 
 <!-- begin app-main -->
 <div class="app-main" id="main">
@@ -17,7 +15,7 @@
                 <!-- begin page title -->
                 <div class="d-block d-lg-flex flex-nowrap align-items-center">
                     <div class="page-title mr-4 pr-4 border-right">
-                        <h1>VendorDetail</h1>
+                        <h1>AccessoriesStockDetail</h1>
                     </div>
                     <div class="breadcrumb-bar align-items-center"></div>
                 </div>
@@ -25,14 +23,14 @@
                 <!---------------------->
                 <div class="card-body">
                     <div class="accordion" id="accordionsimplefill">
-                        <table class="table">
+                        <table class="table" id="myTable">
                             <thead>
                                 <tr>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Name)
+                                        @Html.DisplayNameFor(model => model.Accessory)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Address)
+                                        @Html.DisplayNameFor(model => model.Quantity)
                                     </th>
                                     <th></th>
                                 </tr>
@@ -42,13 +40,14 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Name)
+                                            @Html.DisplayFor(modelItem => item.Accessory.Name)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Address)
+                                            @Html.DisplayFor(modelItem => item.Quantity)
                                         </td>
                                         <td>
-                                            <a class="btn btn-danger" asp-action="VendorDelete" asp-route-id="@item.Id">Delete</a>
+                                            <a class="btn btn-success" asp-action="AccessoriesStockUpdate" asp-route-id="@item.Id">Edit</a> |
+                                            <a class="btn btn-danger" asp-action="AccessoriesStockDelete" asp-route-id="@item.Id">Delete</a> |
                                         </td>
                                     </tr>
                                 }

@@ -1,15 +1,10 @@
-﻿@model IEnumerable<showroomManagement.Models.Stock>
+﻿@model IEnumerable<showroomManagement.Models.UsedCar>
 
 @{
-    ViewData["Title"] = "StockDetail";
+    ViewData["Title"] = "UsedCarDetail";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
-<h1>StockDetail</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <!-- begin app-main -->
 <div class="app-main" id="main">
     <!-- begin container-fluid -->
@@ -20,7 +15,7 @@
                 <!-- begin page title -->
                 <div class="d-block d-lg-flex flex-nowrap align-items-center">
                     <div class="page-title mr-4 pr-4 border-right">
-                        <h1>StockDetail</h1>
+                        <h1>OldCarDetail</h1>
                     </div>
                     <div class="breadcrumb-bar align-items-center"></div>
                 </div>
@@ -32,7 +27,10 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Available)
+                                        @Html.DisplayNameFor(model => model.Demand)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ModelYear)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.Car)
@@ -45,18 +43,22 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Available)
+                                            @Html.DisplayFor(modelItem => item.Demand)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ModelYear)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Car.Name)
                                         </td>
                                         <td>
-                                            <a class="btn btn-success" asp-action="StockUpdate" asp-route-id="@item.Id">Update</a>
-                                            <a class="btn btn-danger" asp-action="stockDelete" asp-route-id="@item.Id">Delete</a>
+                                            <a class="btn btn-success" asp-action="UsedCarUpdate" asp-route-id="@item.Id">Update</a>
+                                            <a class="btn btn-danger" asp-action="UsedCarDelete" asp-route-id="@item.Id">Delete</a>
                                         </td>
                                     </tr>
                                 }
                             </tbody>
+
                         </table>
 
                     </div>

@@ -154,6 +154,23 @@ namespace showroomManagement.Controllers
             }
             return View();
         }
+        public IActionResult NewCarUpdate(int id)
+        {
+            ViewData["CarId"] = new SelectList(_context.Cars, "Id", "Name");
+            var item = this._context.Stocks.Where(x => x.Id == id).FirstOrDefault();
+            return View(item);
+        }
+        [HttpPost]
+        public async Task<IActionResult> NewCarUpdate(NewCar newCar)
+        {
+            this._context.Entry(newCar).State = EntityState.Modified;
+            if (await this._context.SaveChangesAsync() > 0)
+            {
+                return RedirectToAction("NewCarDetail", "car");
+            }
+            return View();
+        }
+
         public async Task<IActionResult> NewCarDetail()
         {
             return View(await _context.NewCars.ToListAsync());
@@ -182,6 +199,23 @@ namespace showroomManagement.Controllers
             }
             return View();
         }
+        public IActionResult UsedCarUpdate(int id)
+        {
+            ViewData["CarId"] = new SelectList(_context.Cars, "Id", "Name");
+            var item = this._context.Stocks.Where(x => x.Id == id).FirstOrDefault();
+            return View(item);
+        }
+        [HttpPost]
+        public async Task<IActionResult> UsedCarUpdate(UsedCar usedCar)
+        {
+            this._context.Entry(usedCar).State = EntityState.Modified;
+            if (await this._context.SaveChangesAsync() > 0)
+            {
+                return RedirectToAction("UsedCarDetail", "car");
+            }
+            return View();
+        }
+
         public async Task<IActionResult> UsedCarDetail()
         {
             return View(await _context.UsedCars.ToListAsync());

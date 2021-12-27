@@ -7,7 +7,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace showroomManagement.Models
 {
-    //[Table("Accessories")]
+    [Table("Accessories")]
+    //[Table("Accessory")]
     public partial class Accessory
     {
         public Accessory()

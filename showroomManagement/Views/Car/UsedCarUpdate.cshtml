@@ -1,0 +1,72 @@
+﻿@model showroomManagement.Models.UsedCar
+
+@{
+    ViewData["Title"] = "UsedCarUpdate";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<!-- begin app-main -->
+<div class="app-main" id="main">
+    <!-- begin container-fluid -->
+    <div class="container-fluid">
+        <!-- begin row -->
+        <div class="row">
+            <div class="col-md-12 m-b-30">
+                <!-- begin page title -->
+                <div class="d-block d-lg-flex flex-nowrap align-items-center">
+                    <div class="page-title mr-4 pr-4 border-right">
+                        <h1>UsedCarUpdate</h1>
+                    </div>
+                    <div class="breadcrumb-bar align-items-center"></div>
+                </div>
+                <!-- end page title -->
+                <!---------------------->
+                <div class="card-body">
+                    <div class="accordion" id="accordionsimplefill">
+                        <div class="mb-2 acd-group">
+                            <div class="card-header bg-primary rounded-0">
+                                <h5 class="mb-0">
+                                    <a href="#collapse" class="btn-block text-white text-left acd-heading" data-toggle="collapse">UsedCarUpdate</a>
+                                </h5>
+                            </div>
+                            <div id="collapse" class="collapse show" data-parent="#accordionsimplefill">
+                                <div class="card-body">
+                                    <div class="row col-md-12">
+                                        <div class="col-md-12">
+                                            <form asp-action="UsedCarUpdate">
+                                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                <input type="hidden" asp-for="Id" />
+                                                <div class="form-group">
+                                                    <label asp-for="CarId" class="control-label"></label>
+                                                    <select asp-for="CarId" class="form-control" asp-items="ViewBag.CarId"></select>
+                                                    <span asp-validation-for="CarId" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label asp-for="Demand" class="control-label"></label>
+                                                    <input asp-for="Demand" class="form-control" />
+                                                    <span asp-validation-for="Demand" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label asp-for="ModelYear" class="control-label"></label>
+                                                    <input asp-for="ModelYear" class="form-control" />
+                                                    <span asp-validation-for="ModelYear" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="submit" value="Update" class="btn btn-primary" />
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end container-fluid -->
+</div>
+<!-- end app-main -->

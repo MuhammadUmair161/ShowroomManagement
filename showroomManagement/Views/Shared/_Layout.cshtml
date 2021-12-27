@@ -128,7 +128,7 @@
                                     <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Used Cars</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item dropdown">
+                            @*<li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Shop
                                 </a>
@@ -136,7 +136,8 @@
                                     <li><a class="dropdown-item" href="shop-list.html">Shop List</a></li>
                                     <li><a class="dropdown-item" href="shop-details.html">Shop Details</a></li>
                                 </ul>
-                            </li>
+                            </li>*@
+
                             <li class="nav-item dropdown"><a class="nav-link" asp-controller="Home" asp-action="Services">Services</a></li>
                             <li class="nav-item dropdown"><a class="nav-link" asp-controller="Home" asp-action="ContactUS">Contact US</a></li>
                             <li class="nav-item dropdown"><a class="nav-link" asp-controller="Home" asp-action="AboutUS">About US</a></li>
@@ -148,12 +149,6 @@
                                     <li><a class="dropdown-item" asp-controller="Home" asp-action="Brands">Brands</a></li>
                                     <li><a class="dropdown-item" asp-controller="Home" asp-action="Faq">Faq</a></li>
                                     <li><a class="dropdown-item" asp-controller="Home" asp-action="ComingSoon">Coming Soon</a></li>
-                                    <li class="dropdown-submenu">
-                                        <a class="dropdown-item dropdown-toggle" href="#">Grid Layout</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="car-grid-fullWidth.html">Grid FullWidth</a></li>
-                                        </ul>
-                                    </li>
                                 </ul>
                             </li>
 
@@ -165,7 +160,7 @@
         </header>
         <!-- Main header end -->
         <!-- Sidenav start -->
-        <nav id="sidebar" class="nav-sidebar">
+        <nav id="sidebar" class="nav-sidebar fc-scroller overflow-auto">
             <!-- Close btn-->
             <div id="dismiss">
                 <i class="fa fa-close"></i>
@@ -179,22 +174,36 @@
                 <div class="sidebar-navigation">
                     <ul class="menu-list">
                         <li><a asp-controller="Home" asp-action="Index" class="active">Home</a></li>
-                        <li>
-                            <a href="#">Car Listing <em class="fa fa-chevron-down"></em></a>
+                        <li class="nav-item dropdown">
+                            <a class="active" href="#">Car <em class="fa fa--chevron-down"></em></a>
+
                             <ul>
-                                <li>
-                                    <a href="#">List Layout <em class="fa fa-chevron-down"></em></a>
-                                    <ul>
-                                        <li><a href="car-list-rightside.html">List Right Sidebar</a></li>
-                                        <li><a href="car-list-leftsidebar.html">List Left Sidebar</a></li>
-                                        <li><a href="car-list-fullWidth.html">List FullWidth</a></li>
-                                    </ul>
-                                </li>
+                                <li><a asp-controller="Car" asp-action="newCar">New Cars</a></li>
+                                <li><a asp-controller="Car" asp-action="Index">Old Cars</a></li>
                             </ul>
                         </li>
                         <li><a asp-controller="Home" asp-action="Services" class="active">Services</a></li>
                         <li><a asp-controller="Home" asp-action="AboutUS" class="active">About US</a></li>
                         <li><a asp-controller="Home" asp-action="ContactUS" class="active">Contact US</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="active" href="#">More <em class="fa fa--chevron-down"></em></a>
+                            <ul>
+                                <li><a asp-controller="Home" asp-action="Brands">Brands</a></li>
+                                <li><a asp-controller="Home" asp-action="Faq">Faq</a></li>
+                                <li><a asp-controller="Home" asp-action="ComingSoon">Coming Soon</a></li>
+                            </ul>
+                        </li>
+                        @if (_signInManager.IsSignedIn(User))
+                        {
+                            <li><a asp-controller="Accounts" asp-action="LogOut" class="active">LogOut</a></li>
+                        }
+                        else
+                        {
+                            <li><a asp-controller="Accounts" asp-action="Login" class="active">Login</a></li>
+                            <li><a asp-controller="Accounts" asp-action="SignUp" class="active">Register</a></li>
+
+                        }
+
                         <li>
                             <a href="#full-page-search" class="nav-link h-icon">
                                 <i class="fa fa-search"></i>

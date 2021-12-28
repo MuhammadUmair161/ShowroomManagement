@@ -30,16 +30,12 @@
             </p>
         </div>
         <div class="row">
-            @for (int i = 1; i <= 100; i++)
+            @foreach (var item in Model)
             {
-                <partial name="_CarPv"></partial>
+                @Html.Partial("_CarPv", item);
             }
 
-            @*@foreach (var item in Model)
-            {
-                <partial name="_CarPv",item></partial>
 
-            }*@
         </div>
     </div>
 </div>

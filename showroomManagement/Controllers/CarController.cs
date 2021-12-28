@@ -22,9 +22,10 @@ namespace showroomManagement.Controllers
             this._webHostEnvironment = WebHostEnvironment;
         }
         // GET: cars
-        public ActionResult newCar()
+        public async Task<IActionResult> newCar()
         {
-            return View();
+            var shrowroomDbContext = _context.NewCars.Include(n => n.Car);
+            return View(await shrowroomDbContext.ToListAsync());
         }
         public ActionResult UsedCar()
         {

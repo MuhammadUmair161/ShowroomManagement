@@ -26,6 +26,10 @@ namespace showroomManagement.Controllers
         {
             return View();
         }
+        public ActionResult UsedCar()
+        {
+            return View();
+        }
         public ActionResult _CarPv()
         {
             return View();
@@ -54,24 +58,23 @@ namespace showroomManagement.Controllers
                     return RedirectToAction("CarIndex", "Car");
                 }
             }
-            return View();
+            return RedirectToAction("CarIndex", "Car");
         }
         public async Task<IActionResult> CarDetail()
         {
-            return View(await _context.Cars.ToListAsync());
+            var shrowroomDbContext = _context.Cars.Include(c => c.CarType).Include(c => c.Company);
+            return View(await shrowroomDbContext.ToListAsync());
         }
         public async Task<IActionResult> CarDelete(int? id)
         {
-            var Car = await _context.Cars.FirstOrDefaultAsync(m => m.Id == id);
-            this._context.Entry(Car).State = EntityState.Deleted;
+            var car = await _context.Cars.FindAsync(id);
+            this._context.Entry(car).State = EntityState.Deleted;
             if (await this._context.SaveChangesAsync() > 0)
             {
                 return RedirectToAction("CarDetail", "Car");
             }
             return View();
         }
-
-
         private string GetImage(Car car)
         {
             string root = "Image/";
@@ -157,7 +160,7 @@ namespace showroomManagement.Controllers
         public IActionResult NewCarUpdate(int id)
         {
             ViewData["CarId"] = new SelectList(_context.Cars, "Id", "Name");
-            var item = this._context.Stocks.Where(x => x.Id == id).FirstOrDefault();
+            var item = this._context.NewCars.Where(x => x.Id == id).FirstOrDefault();
             return View(item);
         }
         [HttpPost]
@@ -170,10 +173,11 @@ namespace showroomManagement.Controllers
             }
             return View();
         }
-
+        [HttpGet]
         public async Task<IActionResult> NewCarDetail()
         {
-            return View(await _context.NewCars.ToListAsync());
+            var shrowroomDbContext = _context.NewCars.Include(n => n.Car);
+            return View(await shrowroomDbContext.ToListAsync());
         }
         public async Task<IActionResult> NewCarDelete(int? id)
         {
@@ -218,7 +222,8 @@ namespace showroomManagement.Controllers
 
         public async Task<IActionResult> UsedCarDetail()
         {
-            return View(await _context.UsedCars.ToListAsync());
+            var shrowroomDbContext = _context.UsedCars.Include(n => n.Car);
+            return View(await shrowroomDbContext.ToListAsync());
         }
         public async Task<IActionResult> UsedCarDelete(int? id)
         {
@@ -247,7 +252,8 @@ namespace showroomManagement.Controllers
         }
         public async Task<IActionResult> RegisteredCarDetail()
         {
-            return View(await _context.RegisteredCars.ToListAsync());
+            var shrowroomDbContext = _context.RegisteredCars.Include(n => n.Car);
+            return View(await shrowroomDbContext.ToListAsync());
         }
         public async Task<IActionResult> RegisteredCarDelete(int? id)
         {

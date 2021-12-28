@@ -64,7 +64,7 @@ namespace showroomManagement
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=dashboard}/{action=Index}/{id?}");
+                    pattern: "{controller=home}/{action=Index}/{id?}");
             });
         }
     }

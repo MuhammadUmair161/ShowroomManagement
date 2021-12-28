@@ -46,7 +46,7 @@ namespace showroomManagement.Controllers
 
         public async Task<IActionResult> AccessoryDetail()
         {
-            return View(await _context.AccessoriesStocks.ToListAsync());
+            return View(await _context.Accessories.ToListAsync());
         }
 
         public IActionResult AccessoryUpdate(int id)

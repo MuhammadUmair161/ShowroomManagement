@@ -28,7 +28,8 @@ namespace showroomManagement.Controllers
         }
         public async Task<IActionResult> StockDetail()
         {
-            return View(await _context.Stocks.ToListAsync());
+            var shrowroomDbContext = _context.Stocks.Include(n => n.Car);
+            return View(await shrowroomDbContext.ToListAsync());
         }
         public async Task<IActionResult> StockDelete(int? id)
         {

@@ -37,18 +37,15 @@
                                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                                 <input type="hidden" asp-for="Id" />
                                                 <div class="form-group">
-                                                    <label asp-for="CarId" class="control-label"></label>
                                                     <select asp-for="CarId" class="form-control" asp-items="ViewBag.CarId"></select>
                                                     <span asp-validation-for="CarId" class="text-danger"></span>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label asp-for="Demand" class="control-label"></label>
-                                                    <input asp-for="Demand" class="form-control" />
+                                                    <input asp-for="Demand" placeholder="Demand" class="form-control" />
                                                     <span asp-validation-for="Demand" class="text-danger"></span>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label asp-for="ModelYear" class="control-label"></label>
-                                                    <input asp-for="ModelYear" class="form-control" />
+                                                    <input asp-for="ModelYear" placeholder="ModelYear" class="form-control" />
                                                     <span asp-validation-for="ModelYear" class="text-danger"></span>
                                                 </div>
                                                 <div class="form-group">

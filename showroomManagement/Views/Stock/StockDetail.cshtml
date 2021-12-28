@@ -5,11 +5,6 @@
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
-<h1>StockDetail</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <!-- begin app-main -->
 <div class="app-main" id="main">
     <!-- begin container-fluid -->
@@ -32,10 +27,10 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Available)
+                                        @Html.DisplayNameFor(model => model.Car)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Car)
+                                        @Html.DisplayNameFor(model => model.Available)
                                     </th>
                                     <th></th>
                                 </tr>
@@ -45,10 +40,10 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Available)
+                                            @Html.DisplayFor(modelItem => item.Car.Name)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Car.Name)
+                                            @Html.DisplayFor(modelItem => item.Available)
                                         </td>
                                         <td>
                                             <a class="btn btn-success" asp-action="StockUpdate" asp-route-id="@item.Id">Update</a>

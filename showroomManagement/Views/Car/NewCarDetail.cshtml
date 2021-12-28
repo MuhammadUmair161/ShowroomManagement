@@ -40,21 +40,22 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ModelYear)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.CurrentPrice)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Car.Name)
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success" asp-action="NewCarUpdate" asp-route-id="@item.Id">Update</a>
-                                            <a class="btn btn-danger" asp-action="NewCarDelete" asp-route-id="@item.Id">Delete</a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ModelYear)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CurrentPrice)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Car.Name)
+                                    </td>
+                                   
+                                    <td>
+                                        <a class="btn btn-success" asp-action="NewCarUpdate" asp-route-id="@item.Id">Update</a>
+                                        <a class="btn btn-danger" asp-action="NewCarDelete" asp-route-id="@item.Id">Delete</a>
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
 

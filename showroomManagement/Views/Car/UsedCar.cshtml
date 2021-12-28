@@ -1,6 +1,6 @@
-﻿@model IEnumerable<showroomManagement.Models.NewCar>
+﻿
 @{
-    ViewData["Title"] = "newCar";
+    ViewData["Title"] = "UsedCar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,7 +9,7 @@
 <div class="sub-banner">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
-            <h1>New cars</h1>
+            <h1>Old cars</h1>
             <ul class="breadcrumbs">
                 <li><a asp-controller="Home" asp-action="index">Home</a></li>
                 <li class="active">New cars</li>
@@ -23,7 +23,7 @@
     <div class="container">
         <!-- Main title -->
         <div class="main-title">
-            <h1>New Cars</h1>
+            <h1>Old Cars</h1>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                 eiusmod
@@ -31,15 +31,16 @@
         </div>
         <div class="row">
             @for (int i = 1; i <= 100; i++)
-            {
-                <partial name="_CarPv"></partial>
-            }
+                {
+                    <partial name="_CarPv"></partial>
+                }
 
             @*@foreach (var item in Model)
             {
-                <partial name="_CarPv",item></partial>
+                <partial name="_CarPv" ,item></partial>
 
             }*@
+
         </div>
     </div>
 </div>

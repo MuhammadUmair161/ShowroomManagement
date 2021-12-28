@@ -39,7 +39,8 @@ namespace showroomManagement.Controllers
 
         public async Task<IActionResult> PurchaseDetail()
         {
-            return View(await _context.Purchases.ToListAsync());
+            var shrowroomDbContext = _context.Purchases.Include(p => p.Car).Include(p => p.Vendor);
+            return View(await shrowroomDbContext.ToListAsync());
         }
         public async Task<IActionResult> PurchaseDelete(int? id)
         {

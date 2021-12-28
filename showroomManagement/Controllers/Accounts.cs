@@ -67,24 +67,23 @@ namespace showroomManagement.Controllers
             }
             return View();
         }
-
-        [HttpGet]
-        public async Task<IActionResult> EmailConfirm(string userId, string token)
+        public async Task<IActionResult> EmailConfirm(string userId, string ctoken)
         {
             var user = await _userManager.FindByIdAsync(userId);
-            var Result = await _userManager.ConfirmEmailAsync(user, token);
-            if (Result.Succeeded)
+            var Result = await _userManager.ConfirmEmailAsync(user, ctoken);
+            if (Result!=null)
             {
                 user.EmailConfirmed = true;
                 await _userManager.UpdateAsync(user);
+                return RedirectToAction("Login", "Accounts");
             }
             return View();
         }
 
-        private void sendEmailConfirm(ApplicationUser user, string token)
+        private void sendEmailConfirm(ApplicationUser user, string ctoken)
         {
-            string appDomain = this._configuration.GetSection("Application:AppDomain").Value;
-            string confirmationLink = this._configuration.GetSection("Application:EmailConfirmation").Value;
+            //string appDomain = this._configuration.GetSection("Application:AppDomain").Value;
+            string confirmationLink = Url.Action("EmailConfirm", "Accounts", new { userId = user.Id, token = ctoken }, protocol: HttpContext.Request.Scheme);
 
             string to = user.Email;
             string subject = "Account Confirmation";
@@ -92,7 +91,7 @@ namespace showroomManagement.Controllers
 
             mailMessage.To.Add(to);
             mailMessage.Subject = subject;
-            mailMessage.Body = this.Htmlbody(user, appDomain + confirmationLink, token);
+            mailMessage.Body = this.Htmlbody(user, confirmationLink, ctoken);
             mailMessage.From = new MailAddress("wick99185@gmail.com");
             mailMessage.IsBodyHtml = true;
 
@@ -102,14 +101,14 @@ namespace showroomManagement.Controllers
 
             smtpClient.Send(mailMessage);
         }
-        private string Htmlbody(ApplicationUser user, string link, string token)
+        private string Htmlbody(ApplicationUser user, string link, string ctoken)
         {
             string body = null;
             using (StreamReader reader = new StreamReader(this._webHostEnvironment.WebRootPath + "/EmailTemp/htmlpage.html"))
             {
                 body = reader.ReadToEnd();
                 body = body.Replace("{subject}", user.FristName);
-                body = body.Replace("{link}", string.Format(link, user.Id, token));
+                body = body.Replace("{link}", string.Format(link, user.Id, ctoken));
             }
             return body;
         }

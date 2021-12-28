@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -297,10 +299,10 @@
                                         <div class="bg-gradient px-4 py-3">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <div class="mr-1">
-                                                    <h4 class="text-white mb-0">Alice Williams</h4>
-                                                    <small class="text-white">Henry@example.com</small>
+                                                    @if (_signInManager.IsSignedIn(User))
+                                                    {<h4 class="text-white mb-0">@User.FindFirst("UserFName").Value @User.FindFirst("UserlName").Value</h4>}
                                                 </div>
-                                                <a href="#" class="text-white font-20 tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout">
+                                                <a asp-controller="Accounts" asp-action="LogOut" class="text-white font-20 tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout">
                                                     <i class="zmdi zmdi-power"></i>
                                                 </a>
                                             </div>
@@ -351,24 +353,11 @@
                     <!-- begin sidebar-nav -->
                     <div class="sidebar-nav scrollbar scroll_dark">
                         <ul class="metismenu " id="sidebarNav">
-                            <li class="nav-static-title">Personal</li>
-                            <li><a asp-controller="home" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-home"></i><span class="nav-title">Go to Web</span></a> </li>
+                            <li class="nav-static-title">Home</li>
+                            <li><a asp-controller="dashboard" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-home"></i><span class="nav-title">Home</span></a> </li>
+                            <li class="nav-static-title">Detail</li>
                             <li>
-                                <a class="has-arrow" asp-controller="Employee" asp-action="EmployeeDetail" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Employee</span></a>
-                                <ul aria-expanded="false" class="collapse">
-                                    <li> <a asp-controller="Employee" asp-action="EmployeeDetail">EmployeeDetail</a> </li>
-                                    <li> <a asp-controller="Employee" asp-action="EmployeeIndex">Add Employee</a> </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="has-arrow" asp-controller="Vendor" asp-action="VendorDetail" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Vendor</span></a>
-                                <ul aria-expanded="false" class="collapse">
-                                    <li> <a asp-controller="Vendor" asp-action="VendorDetail">VendorDetail</a> </li>
-                                    <li> <a asp-controller="Vendor" asp-action="VendorIndex">Add Vendor</a> </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="has-arrow" asp-controller="Accessories" asp-action="AccessoryDetail" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Accessory</span></a>
+                                <a class="has-arrow" asp-controller="Accessories" asp-action="AccessoryDetail" aria-expanded="false"><i class="nav-icon ti ti-archive"></i><span class="nav-title">Accessory</span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <li> <a asp-controller="Accessories" asp-action="AccessoryDetail">AccessoryDetail</a> </li>
                                     <li> <a asp-controller="Accessories" asp-action="AccessoryIndex">Add Accessory</a> </li>
@@ -377,16 +366,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a class="has-arrow" asp-controller="Purchase" asp-action="PurchaseDetail" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Inventory</span></a>
-                                <ul aria-expanded="false" class="collapse">
-                                    <li> <a asp-controller="Purchase" asp-action="PurchaseDetail">PurchaseDetail</a> </li>
-                                    <li> <a asp-controller="Purchase" asp-action="PurchaseIndex">Add Purchase</a> </li>
-                                    <li> <a asp-controller="Stock" asp-action="StockDetail">StockDetail</a> </li>
-                                    <li> <a asp-controller="Stock" asp-action="StockIndex">Add Stock</a> </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="has-arrow" asp-controller="Car" asp-action="CarIndex" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Car</span></a>
+                                <a class="has-arrow" asp-controller="Car" asp-action="CarDetail" aria-expanded="false"><i class="nav-icon ti ti-car"></i><span class="nav-title">Car</span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <li> <a asp-controller="Car" asp-action="CarIndex">Add Car</a> </li>
                                     <li> <a asp-controller="Car" asp-action="NewCarDetail">NewCarDetail</a> </li>
@@ -397,10 +377,39 @@
                                     <li> <a asp-controller="Car" asp-action="CompanyDetail">CompanyDetail</a> </li>
                                 </ul>
                             </li>
-
+                            <li class="nav-static-title">Info</li>
                             <li><a asp-controller="User" asp-action="CustomerDetailIndex" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">CustomerDetail</span></a> </li>
-                            <li><a asp-controller="User" asp-action="OrderDetail" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">OrderDetail</span></a> </li>
-                            <li><a asp-controller="dashboard" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-calendar"></i><span class="nav-title">Calendar</span></a></li>
+                            <li><a asp-controller="User" asp-action="OrderDetail" aria-expanded="false"><i class="nav-icon ti ti-archive"></i><span class="nav-title">OrderDetail</span></a> </li>
+                            <li>
+                                <a class="has-arrow" asp-controller="Employee" asp-action="EmployeeDetail" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Employee</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li> <a asp-controller="Employee" asp-action="EmployeeDetail">EmployeeDetail</a> </li>
+                                    <li> <a asp-controller="Employee" asp-action="EmployeeIndex">Add Employee</a> </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="has-arrow" asp-controller="Vendor" asp-action="VendorDetail" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Vendor</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li> <a asp-controller="Vendor" asp-action="VendorDetail">VendorDetail</a> </li>
+                                    <li> <a asp-controller="Vendor" asp-action="VendorIndex">Add Vendor</a> </li>
+                                </ul>
+                            </li>
+                            <li class="nav-static-title">Inventory</li>
+                            <li>
+                                <a class="has-arrow" asp-controller="Purchase" asp-action="PurchaseDetail" aria-expanded="false"><i class="nav-icon ti ti-archive"></i><span class="nav-title">Inventory</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li> <a asp-controller="Purchase" asp-action="PurchaseDetail">PurchaseDetail</a> </li>
+                                    <li> <a asp-controller="Purchase" asp-action="PurchaseIndex">Add Purchase</a> </li>
+                                    <li> <a asp-controller="Stock" asp-action="StockDetail">StockDetail</a> </li>
+                                    <li> <a asp-controller="Stock" asp-action="StockIndex">Add Stock</a> </li>
+                                </ul>
+                            </li>
+
+                            @if (_signInManager.IsSignedIn(User))
+                            {
+                                <li><a asp-controller="home" asp-action="Index" aria-expanded="false"><i class="nav-icon ti ti-share"></i><span class="nav-title">Go to Web</span></a> </li>
+                                <li><a asp-controller="Accounts" asp-action="LogOut" aria-expanded="false"><i class="nav-icon ti ti-s"></i><span class="nav-title">LogOut</span></a></li>
+                            }
                         </ul>
                     </div>
                     <!-- end sidebar-nav -->
@@ -418,7 +427,7 @@
                         <p>&copy; Copyright 2019. All rights reserved.</p>
                     </div>
                     <div class="col  col-sm-6 ml-sm-auto text-center text-sm-right">
-                        <p>AutoCar <i class="fa fa-cab"></i> by Potenza</p>
+                        <p>AutoCar <i class="fa fa-cab"></i></p>
                     </div>
                 </div>
             </footer>
@@ -439,7 +448,7 @@
 
     <script>
         $(document).ready(function () {
-            $('#myTable').DataTable();  
+            $('#myTable').DataTable();
         });
     </script>
     @RenderSection("Scripts", required: false)

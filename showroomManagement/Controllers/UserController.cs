@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using showroomManagement.Models;
 using System;
 using System.Collections.Generic;
@@ -22,19 +23,28 @@ namespace showroomManagement.Controllers
         {
             return View();
         }
+        public IActionResult Customer()
+        {
+            return View();
+        }
 
         [HttpPost]
-        public IActionResult CustomerDetail(CustomerDetail customer)
+        public async Task<IActionResult> Customer(CustomerDetail customer)
         {
             if (ModelState.IsValid)
             {
                 this._context.CustomerDetails.Add(customer);
-                if (this._context.SaveChanges() > 0)
+                if (await this._context.SaveChangesAsync() > 0)
                 {
-                    //return RedirectToAction("AccessoryIndex", "Accessory");
+                    return RedirectToAction("index", "home");
                 }
             }
             return View();
+        }
+
+        public async Task<IActionResult> CustomerDetail()
+        {
+            return View(await _context.CustomerDetails.ToListAsync());
         }
         public IActionResult OrderDetail()
         {

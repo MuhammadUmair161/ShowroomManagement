@@ -1,15 +1,15 @@
-﻿@model showroomManagement.Models.NewCar
+﻿@model showroomManagement.Models.UsedCar
 
 <div class="col-lg-4 col-md-6">
     <div class="car-box-3">
         <div class="car-thumbnail">
-            <a asp-controller="User" asp-action="Customer" class="car-img">
-                <div class="for">Buy Now</div>
+            <a href="#" class="car-img">
+                <div class="for">For Sale</div>
                 <div class="price-box">
-                    <span>Rs @Model.CurrentPrice</span>
+                    <span>Rs @Model.Demand</span>
                 </div>
                 @*<img class="d-block w-100" src="~/theme/assets/img/car/car-1.jpg" alt="car">*@
-                <img class="d-block h-100 w-100" src="~/@Model.Car.CarImage1" alt="car">
+                <img class="d-block w-100" src="~/@Model.Car.CarImage1" alt="car">
             </a>
             <div class="carbox-overlap-wrapper">
                 <div class="overlap-box">

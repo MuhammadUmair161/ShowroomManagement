@@ -9,7 +9,7 @@
     <div id="collapse" class="collapse show" data-parent="#accordionsimplefill">
         <div class="card-body">
             <div class="row">
-                <form class="w-100" asp-action="_Accessory">
+                <form class="w-100" asp-action="_Accessory" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <input asp-for="Name" placeholder="Name" class="form-control" />

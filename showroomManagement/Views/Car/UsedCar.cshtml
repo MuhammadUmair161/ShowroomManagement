@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<showroomManagement.Models.UsedCar>
 @{
     ViewData["Title"] = "UsedCar";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -30,16 +30,10 @@
             </p>
         </div>
         <div class="row">
-            @for (int i = 1; i <= 100; i++)
-                {
-                    <partial name="_CarPv"></partial>
-                }
-
-            @*@foreach (var item in Model)
+            @foreach (var item in Model)
             {
-                <partial name="_CarPv" ,item></partial>
-
-            }*@
+                @Html.Partial("_UsedCarPv", item);
+            }
 
         </div>
     </div>

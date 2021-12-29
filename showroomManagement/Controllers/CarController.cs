@@ -24,14 +24,19 @@ namespace showroomManagement.Controllers
         // GET: cars
         public async Task<IActionResult> newCar()
         {
-            var shrowroomDbContext = _context.NewCars.Include(n => n.Car);
+            var shrowroomDbContext = _context.NewCars.Include(n => n.Car).Include(n=>n.Car.CarType).Include(n => n.Car.Company);
             return View(await shrowroomDbContext.ToListAsync());
         }
-        public ActionResult UsedCar()
+        public async Task<IActionResult> UsedCar()
+        {
+            var shrowroomDbContext = _context.UsedCars.Include(n => n.Car).Include(n => n.Car.CarType).Include(n => n.Car.Company);
+            return View(await shrowroomDbContext.ToListAsync());
+        }
+        public ActionResult _CarPv()
         {
             return View();
         }
-        public ActionResult _CarPv()
+        public ActionResult _UsedCarPv()
         {
             return View();
         }
@@ -153,7 +158,7 @@ namespace showroomManagement.Controllers
                 this._context.NewCars.Add(newCar);
                 if (this._context.SaveChanges() > 0)
                 {
-                    return RedirectToAction("CarIndex", "Car");
+                    return RedirectToAction("newCar", "Car");
                 }
             }
             return View();
@@ -199,7 +204,7 @@ namespace showroomManagement.Controllers
                 this._context.UsedCars.Add(usedCar);
                 if (this._context.SaveChanges() > 0)
                 {
-                    return RedirectToAction("CarIndex", "Car");
+                    return RedirectToAction("UsedCar", "Car");
                 }
             }
             return View();
@@ -207,7 +212,7 @@ namespace showroomManagement.Controllers
         public IActionResult UsedCarUpdate(int id)
         {
             ViewData["CarId"] = new SelectList(_context.Cars, "Id", "Name");
-            var item = this._context.Stocks.Where(x => x.Id == id).FirstOrDefault();
+            var item = this._context.UsedCars.Where(x => x.Id == id).FirstOrDefault();
             return View(item);
         }
         [HttpPost]

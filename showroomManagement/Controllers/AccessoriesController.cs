@@ -38,7 +38,7 @@ namespace showroomManagement.Controllers
                 this._context.Accessories.Add(accessory);
                 if (await this._context.SaveChangesAsync() > 0)
                 {
-                    return RedirectToAction("AccessoriesIndex", "Accessories");
+                    return RedirectToAction("AccessoryDetail", "Accessories");
                 }
             }
             return View();
@@ -108,8 +108,8 @@ namespace showroomManagement.Controllers
         }
         public async Task<IActionResult> AccessoriesStockDetail()
         {
-            ViewData["AccessoryId"] = new SelectList(_context.Accessories, "Id", "Name");
-            return View(await _context.AccessoriesStocks.ToListAsync());
+            var shrowroomDbContext = _context.AccessoriesStocks.Include(n => n.Accessory);
+            return View(await shrowroomDbContext.ToListAsync());
         }
 
         public IActionResult AccessoriesStockUpdate(int id)
